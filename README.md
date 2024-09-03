@@ -1,2 +1,2 @@
-# projectteam
+# FitWave
 Project voor de fitness-app.
