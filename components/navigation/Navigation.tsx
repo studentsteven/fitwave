@@ -1,12 +1,16 @@
-import "@/global.css";
 import Header from "./Header";
 import Footer from "./Footer";
 
-export default function Navigation({ children }) {
+type NavigationProps = {
+  children: any;
+  background: string;
+};
+
+export default function Navigation({ children, background }: NavigationProps) {
   return (
     <>
-      <Header />
-        {children}
+      <Header achtergrond={background} /> 
+      {children}
       <Footer />
     </>
   );
