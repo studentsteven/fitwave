@@ -1,4 +1,3 @@
-import { GluestackUIProvider } from "@/components/ui/gluestack-ui-provider";
 import "@/global.css";
 import { StyleSheet, Text, View } from "react-native";
 import Navigation from "./components/navigation/Navigation";
@@ -16,14 +15,25 @@ export default function App() {
 }
 
 const styles = StyleSheet.create({
-  chooseType: {
-    backgroundColor: "#5D5D5D",
-    display: "flex",
-    justifyContent: "space-around",
-    alignItems: "center",
-    flexDirection: "row",
-    padding: 12,
+  container: {
+    height: "100%",
+    position: "relative"
   },
+  image: {
+    height: "100%",
+    width: "100%",
+    position: "absolute",
+    top: 0,
+    left: 0
+  },
+  insideContainer: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    height: "100%",
+    marginHorizontal: 30
+  },
+
   white: {
     color: "white",
   },

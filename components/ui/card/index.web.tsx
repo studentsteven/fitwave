@@ -21,5 +21,3 @@ const Card = React.forwardRef<HTMLDivElement, ICardProps>(
 Card.displayName = 'Card';
 
 export { Card };
-
- 
