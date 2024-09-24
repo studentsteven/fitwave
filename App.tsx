@@ -1,35 +1,76 @@
-import { GluestackUIProvider } from "@/components/ui/gluestack-ui-provider";
 import "@/global.css";
-import { StyleSheet, Text, View } from 'react-native';
-import Navigation from "./components/navigation/Navigation";
+import { StyleSheet, Text, View, ImageBackground, Image, TextInput } from 'react-native';
+import Button from '@/components/Button';
 
 export default function App() {
   return (
-    <GluestackUIProvider mode="light">
-      <Navigation>
+    <View style={styles.container}>
+      <ImageBackground 
+        source={require('@/assets/backgroundosiris.png')} 
+        resizeMode="cover" 
+        style={styles.image} 
+      />
+      
+      <ImageBackground 
+        source={require('@/assets/young-people-2.jpg')} 
+        resizeMode="cover" 
+        style={[styles.image, { opacity: 0.4 }]} 
+      />
 
-        <View style={styles.chooseType}>
-          <Text onPress={() => alert("week")} style={styles.white}>Week</Text>
-          <Text onPress={() => alert("maand")} style={styles.white}>Maand</Text>
-          <Text onPress={() => alert("jaar")} style={styles.white}>Jaar</Text>
-        </View>
+      <View style={styles.insideContainer}>
+        <Image source={require('@/assets/aventuslogo.png')} />
+        <Text style={{fontSize: 29, marginTop: 12, color: "white"}}>FitWave</Text>
 
-      </Navigation>
+        <TextInput style={[styles.input, { marginTop: 12 }]} placeholder="Gebruikersnaam" placeholderTextColor="#fff" autoCapitalize="none" />
+        <TextInput style={styles.input} placeholder="Wachtwoord" placeholderTextColor="#fff" secureTextEntry={true} autoCapitalize="none" />
 
-    </GluestackUIProvider>
+        <Button text="Inloggen" functie={() => alert('Testing')} type="primary" />
+      </View>
+
+      <View style={styles.accountSetting}>
+        <Text style={{ fontSize: 20, marginBottom: 12, color: "white" }}>Nog geen account?</Text>
+        <Button text="Registreren" functie={() => alert('Testing')} type="secondary" />
+      </View>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
-  chooseType: {
-    backgroundColor: "#5D5D5D",
+  container: {
+    height: "100%",
+    position: "relative"
+  },
+  image: {
+    height: "100%",
+    width: "100%",
+    position: "absolute",
+    top: 0,
+    left: 0
+  },
+  insideContainer: {
     display: "flex",
-    justifyContent: "space-around",
+    justifyContent: "center",
     alignItems: "center",
-    flexDirection: "row",
-    padding: 12,
+    height: "100%",
+    marginHorizontal: 30
   },
-  white: {
-    color: "white"
+  input: {
+    height: 40,
+    width: "100%",
+    backgroundColor: "rgba(255, 255, 255, 0.2)",
+    borderColor: "#fff",
+    borderWidth: 2,
+    borderRadius: 8,
+    marginBottom: 12,
+    color: "white",
+    padding: 10
   },
+  accountSetting: {
+    position: "absolute",
+    bottom: 30,
+    width: "100%",
+    display: "flex",
+    alignItems: "center",
+    paddingHorizontal: 30
+  }
 });
