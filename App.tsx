@@ -1,16 +1,14 @@
 import { GluestackUIProvider } from "@/components/ui/gluestack-ui-provider";
 import "@/global.css";
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View } from "react-native";
 import Navigation from "./components/navigation/Navigation";
 
 export default function App() {
   return (
     <GluestackUIProvider mode="light">
-      <Navigation background="https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png">
-        <View style={styles.chooseType}>
-          <Text onPress={() => alert("week")} style={styles.white}>Week</Text>
-          <Text onPress={() => alert("maand")} style={styles.white}>Maand</Text>
-          <Text onPress={() => alert("jaar")} style={styles.white}>Jaar</Text>
+      <Navigation background="https://aventus.nl/sites/default/files/styles/hero_xl/public/2024-09/A%2013-05-2024-820.webp?h=a05ca7ed&itok=Q-_GJYmw">
+        <View>
+          <Text>hallo</Text>
         </View>
       </Navigation>
     </GluestackUIProvider>
