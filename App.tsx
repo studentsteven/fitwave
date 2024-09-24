@@ -1,6 +1,7 @@
 import "@/global.css";
 import { StyleSheet, Text, View } from "react-native";
 import Navigation from "./components/navigation/Navigation";
+import { GluestackUIProvider } from "./components/ui/gluestack-ui-provider";
 
 export default function App() {
   return (
