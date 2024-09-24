@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { cardStyle } from './styles';
 import type { VariantProps } from '@gluestack-ui/nativewind-utils';
