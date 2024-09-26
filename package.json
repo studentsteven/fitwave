@@ -1,7 +1,7 @@
 {
   "name": "fitwave",
   "version": "1.0.0",
-  "main": "expo/AppEntry.js",
+  "main": "expo-router/entry",
   "scripts": {
     "start": "expo start",
     "android": "DARK_MODE=media expo start --android",
@@ -20,6 +20,7 @@
     "@types/react": "~18.2.79",
     "babel-plugin-module-resolver": "^5.0.2",
     "expo": "~51.0.28",
+    "expo-router": "~3.5.23",
     "expo-status-bar": "~1.12.1",
     "nativewind": "4.0.36",
     "react": "18.2.0",
@@ -27,7 +28,11 @@
     "react-native-reanimated": "^3.15.2",
     "react-native-svg": "^13.4.0",
     "tailwindcss": "^3.4.11",
-    "typescript": "~5.3.3"
+    "typescript": "~5.3.3",
+    "react-native-safe-area-context": "4.10.5",
+    "react-native-screens": "3.31.1",
+    "expo-linking": "~6.3.1",
+    "expo-constants": "~16.0.2"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",

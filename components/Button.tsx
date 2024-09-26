@@ -1,12 +1,13 @@
 import { Pressable, StyleSheet, Text } from 'react-native';
+import { Link } from "expo-router";
 
 type BtnProps = {
     text: string,
-    functie: () => void,
-    type: "primary" | "secondary" | "danger"
+    type?: "primary" | "secondary" | "danger",
+    link?: string
 }
 
-export default function Button({ text, functie, type }: BtnProps) {
+export default function Button({ text, type, link }: BtnProps) {
 
   // Laden stylesheet voor type
   var styleType;
@@ -15,11 +16,23 @@ export default function Button({ text, functie, type }: BtnProps) {
   else if (type == "danger") { styleType = styles.buttonDanger }
   else { styleType = styles.buttonPrimary }
 
-  return (
-    <Pressable onPress={functie} style={styleType}>
-        <Text style={{color:"#fff", fontSize: 15, textAlign: "center" }}>{ text }</Text>
-    </Pressable>
-  );
+  if(link != undefined) {
+    return (
+      <Link href={link} asChild>
+        <Pressable style={styleType}>
+            <Text style={{color:"#fff", fontSize: 15, textAlign: "center" }}>{ text }</Text>
+        </Pressable>
+      </Link>
+
+    )
+  } 
+  else {
+    return (
+      <Pressable style={styleType}>
+          <Text style={{color:"#fff", fontSize: 15, textAlign: "center" }}>{ text }</Text>
+      </Pressable>
+    );
+  }
 }
 
 const styles = StyleSheet.create({

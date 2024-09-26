@@ -24,12 +24,12 @@ export default function Login() {
         <TextInput style={[styles.input, { marginTop: 12 }]} placeholder="Gebruikersnaam" placeholderTextColor="#fff" autoCapitalize="none" />
         <TextInput style={styles.input} placeholder="Wachtwoord" placeholderTextColor="#fff" secureTextEntry={true} autoCapitalize="none" />
 
-        <Button text="Inloggen" functie={() => alert('Testing')} type="primary" />
+        <Button text="Inloggen" link="/home" type="primary" />
       </View>
 
       <View style={styles.accountSetting}>
         <Text style={{ fontSize: 20, marginBottom: 12, color: "white" }}>Nog geen account?</Text>
-        <Button text="Registreren" functie={() => alert('Testing')} type="secondary" />
+        <Button text="Registreren" type="secondary" />
       </View>
     </View>
   );
