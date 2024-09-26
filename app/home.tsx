@@ -1,8 +1,7 @@
-import "@/global.css";
-import { StyleSheet, Text, View } from "react-native";
 import Navigation from "@/components/navigation/Navigation";
 import { GluestackUIProvider } from "@/components/ui/gluestack-ui-provider";
-import Button from "@/components/Button";
+import "@/global.css";
+import { Text, View } from "react-native";
 
 export default function App() {
   return (
@@ -15,28 +14,3 @@ export default function App() {
     </GluestackUIProvider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    height: "100%",
-    position: "relative"
-  },
-  image: {
-    height: "100%",
-    width: "100%",
-    position: "absolute",
-    top: 0,
-    left: 0
-  },
-  insideContainer: {
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    height: "100%",
-    marginHorizontal: 30
-  },
-
-  white: {
-    color: "white",
-  },
-});
