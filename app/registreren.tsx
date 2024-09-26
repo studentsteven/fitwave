@@ -20,7 +20,7 @@ export default function Login() {
       <View style={styles.insideContainer}>
         <Image source={require("@/assets/aventuslogo.png")} />
         <Text style={{ fontSize: 29, marginTop: 12, color: "white" }}>
-          FitWave
+          Fitwave
         </Text>
 
         <TextInput
@@ -29,7 +29,15 @@ export default function Login() {
           placeholderTextColor="#fff"
           autoCapitalize="none"
         />
-        
+
+        <TextInput
+          style={styles.input}
+          placeholder="Emailadres"
+          placeholderTextColor="#fff"
+          secureTextEntry={true}
+          autoCapitalize="none"
+        />
+
         <TextInput
           style={styles.input}
           placeholder="Wachtwoord"
@@ -38,10 +46,10 @@ export default function Login() {
           autoCapitalize="none"
         />
 
-        <Button text="Inloggen" link="/home" type="primary" />
+        <Button text="Registreren" link="/home" type="primary" />
 
-        <Text style={{marginTop: 12, marginBottom: 12, color: "#fff"}}>- Heb je nog geen account? -</Text>
-        <Button link="/registreren" type="secondary" text="Registreren" />
+        <Text style={{marginTop: 12, marginBottom: 12, color: "#fff"}}>- Heb je al een account? -</Text>
+        <Button link="/" type="secondary" text="Inloggen" />
       </View>
     </View>
   );
@@ -49,8 +57,7 @@ export default function Login() {
 
 const styles = StyleSheet.create({
   container: {
-    height: "100%",
-    position: "relative",
+    flex: 1
   },
   image: {
     height: "100%",
