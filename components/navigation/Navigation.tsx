@@ -6,12 +6,13 @@ import Header from "./Header";
 type NavigationProps = {
   children: React.ReactNode;
   background: string;
+  title: string;
 };
 
-export default function Navigation({ children, background }: NavigationProps) {
+export default function Navigation({ children, background, title }: NavigationProps) {
   return (
     <View style={styles.container}>
-      <Header achtergrond={background} titel="Fitwave" />
+      <Header achtergrond={background} titel={title} />
       <Card style={styles.card}>
         <View style={styles.childrenContainer}>{children}</View>
       </Card>

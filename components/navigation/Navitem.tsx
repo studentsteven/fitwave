@@ -1,12 +1,12 @@
 import React from "react";
 import { Image, View, StyleSheet } from "react-native";
-import { Box } from "../ui/box";
+import Button from "../Button";
 
 const images = {
   workout: require("@/assets/workout.png"),
   overzicht: require("@/assets/overzicht.png"),
   home: require("@/assets/home.png"),
-  leaderbord: require("@/assets/leaderbord.png"),
+  leaderboard: require("@/assets/leaderboard.png"),
   voeding: require("@/assets/voeding.png"),
 };
 
@@ -19,11 +19,9 @@ const NavItem = ({ afbeelding }) => {
   }
 
   return (
-    <View>
-      <Box>
-        <Image style={styles.navitem} source={imageSource} />
-      </Box>
-    </View>
+    <Button type="navitem" link={afbeelding}>
+      <Image style={styles.navitem} source={imageSource} />
+    </Button>
   );
 };
 

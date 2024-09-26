@@ -1,26 +1,30 @@
 import { Pressable, StyleSheet, Text } from 'react-native';
 import { Link } from "expo-router";
+import { Children, ReactNode } from 'react';
 
 type BtnProps = {
-    text: string,
-    type?: "primary" | "secondary" | "danger",
-    link?: string
+    text?: string,
+    type?: "primary" | "secondary" | "danger" | "navitem",
+    link?: string,
+    children?: ReactNode
 }
 
-export default function Button({ text, type, link }: BtnProps) {
+export default function Button({ text, type, link, children }: BtnProps) {
 
   // Laden stylesheet voor type
   var styleType;
   if(type == "primary") { styleType = styles.buttonPrimary }
   else if (type == "secondary") { styleType = styles.buttonSecondary }
   else if (type == "danger") { styleType = styles.buttonDanger }
+  else if (type == "navitem") { styleType = styles.navitem }
   else { styleType = styles.buttonPrimary }
 
   if(link != undefined) {
     return (
       <Link href={link} asChild>
         <Pressable style={styleType}>
-            <Text style={{color:"#fff", fontSize: 15, textAlign: "center" }}>{ text }</Text>
+            {text ? <Text style={{color:"#fff", fontSize: 15, textAlign: "center" }}>{ text }</Text> : null}
+            {children ? children : null}
         </Pressable>
       </Link>
 
@@ -29,7 +33,8 @@ export default function Button({ text, type, link }: BtnProps) {
   else {
     return (
       <Pressable style={styleType}>
-          <Text style={{color:"#fff", fontSize: 15, textAlign: "center" }}>{ text }</Text>
+          {text ? <Text style={{color:"#fff", fontSize: 15, textAlign: "center" }}>{ text }</Text> : null}
+          {children ? children : null}
       </Pressable>
     );
   }
@@ -53,5 +58,8 @@ const styles = StyleSheet.create({
     padding: 7,
     width: "100%",
     borderRadius: 8
+  },
+  navitem: {
+    
   }
 });

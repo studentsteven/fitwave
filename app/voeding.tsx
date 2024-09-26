@@ -6,9 +6,9 @@ import { Text, View } from "react-native";
 export default function App() {
   return (
     <GluestackUIProvider mode="light">
-      <Navigation background="https://aventus.nl/sites/default/files/styles/hero_xl/public/2024-09/A%2013-05-2024-820.webp?h=a05ca7ed&itok=Q-_GJYmw" title="FitWave">
+      <Navigation background="https://aventus.nl/sites/default/files/styles/hero_xl/public/2024-09/A%2013-05-2024-820.webp?h=a05ca7ed&itok=Q-_GJYmw" title="Voeding">
         <View>
-          <Text>Dag, Maand, Jaar</Text>
+          <Text>Voeding</Text>
         </View>
       </Navigation>
     </GluestackUIProvider>

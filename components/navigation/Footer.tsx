@@ -14,7 +14,7 @@ export default function Footer() {
         <NavItem afbeelding="workout" />
         <NavItem afbeelding="overzicht" />
         <NavItem afbeelding="home" />
-        <NavItem afbeelding="leaderbord" />
+        <NavItem afbeelding="leaderboard" />
         <NavItem afbeelding="voeding" />
       </View>
     </View>
