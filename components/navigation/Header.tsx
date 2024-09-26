@@ -4,14 +4,16 @@ import {
   StyleSheet,
   View,
   Platform,
+  Text,
 } from "react-native";
 import { Heading } from "../ui/heading";
 
 type HeaderProps = {
   achtergrond: string;
+  titel: string;
 };
 
-export default function Header({ achtergrond }: HeaderProps) {
+export default function Header({ achtergrond, titel }: HeaderProps) {
   return (
     <View style={{ position: "relative" }}>
       <ImageBackground
@@ -27,14 +29,26 @@ export default function Header({ achtergrond }: HeaderProps) {
 
       <View style={styles.nav}>
         <Heading size="5xl" style={styles.heading}>
-          Fitwave
+          {titel}
         </Heading>
-        <Image
-          style={styles.tinyLogo}
-          source={{
-            uri: "https://media.licdn.com/dms/image/v2/D4E03AQFjCU2kJviPyg/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1708070941708?e=1732147200&v=beta&t=d0g3gVL9XNIr-LKvJj08J3jGWvbMEVbECSAZA6_ak3Y",
-          }}
-        />
+        <View style={styles.settings}>
+          <View style={{ display: "flex", alignItems: "center" }}>
+            <Image
+              style={styles.notificaties}
+              source={require("@/assets/notificaties.png")}
+            />
+            <Text style={styles.notificatiestext}>Notificaties</Text>
+          </View>
+          <View>
+            <Image
+              style={styles.pf}
+              source={{
+                uri: "https://media.licdn.com/dms/image/v2/D4E03AQFjCU2kJviPyg/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1708070941708?e=1732147200&v=beta&t=d0g3gVL9XNIr-LKvJj08J3jGWvbMEVbECSAZA6_ak3Y",
+              }}
+            />
+            <Text style={styles.account}>Account</Text>
+          </View>
+        </View>
       </View>
     </View>
   );
@@ -48,13 +62,32 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     padding: Platform.OS === "ios" ? 20 : 35,
   },
+  settings: {
+    display: "flex",
+    flexDirection: "row",
+    gap: 20,
+  },
   heading: {
     color: "white",
   },
-  tinyLogo: {
-    width: 50,
-    height: 50,
+  account: {
+    color: "white",
+    fontSize: 11,
+    top: 2,
+  },
+  notificatiestext: {
+    color: "white",
+    fontSize: 11,
+    top: 5,
+  },
+  pf: {
+    width: 40,
+    height: 40,
     borderRadius: 9999,
+  },
+  notificaties: {
+    width: 30,
+    height: 37,
   },
   background: {
     width: "100%",

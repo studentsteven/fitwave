@@ -11,7 +11,7 @@ type NavigationProps = {
 export default function Navigation({ children, background }: NavigationProps) {
   return (
     <View style={styles.container}>
-      <Header achtergrond={background} />
+      <Header achtergrond={background} titel="Fitwave" />
       <Card style={styles.card}>
         <View style={styles.childrenContainer}>{children}</View>
       </Card>
