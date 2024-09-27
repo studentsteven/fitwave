@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import { View, StyleSheet, Text, Dimensions } from "react-native";
+import { View, StyleSheet, Dimensions } from "react-native";
 import { BarChart } from "react-native-chart-kit";
 
 export default function Chart({type}) {
@@ -12,7 +12,15 @@ export default function Chart({type}) {
             setSteps([Math.random() * 1000, Math.random() * 2000, Math.random() * 1500, Math.random() * 5000]);
             setInfo(["0-6", "6-12", "12-18", "18-24"])
         }
+        if (type === "week") {
+            setSteps([Math.random() * 15000, Math.random() * 15000, Math.random() * 15000, Math.random() * 15000, Math.random() * 15000, Math.random() * 15000, Math.random() * 15000]);
+            setInfo(["Ma", "Di", "Wo", "Do", "Vr", "Za", "Zo"])
+        }
 
+        if (type === "year") {
+            setSteps([Math.random() * 150000, Math.random() * 150000, Math.random() * 150000, Math.random() * 150000, Math.random() * 150000, Math.random() * 150000, Math.random() * 150000,Math.random() * 150000,Math.random() * 150000,Math.random() * 150000,Math.random() * 150000,Math.random() * 150000]);
+            setInfo(["Jan", "Feb", "Mrt", "Apr", "Mei", "Jun", "Jul", "Aug", "Sep", "Okt", "Nov", "Dec"]);
+        }
 
 
     }, [type]);
@@ -37,7 +45,7 @@ export default function Chart({type}) {
         fillShadowGradientToOpacity: 1,
         fillShadowGradientFromOpacity: 1,
         color: () => "#fff",
-        barPercentage: 0.8,
+        barPercentage: type === "year" ? 0.4 : 0.8,
         // barRadius: 10,
     };
 
