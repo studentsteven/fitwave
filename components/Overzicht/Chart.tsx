@@ -3,7 +3,7 @@ import { View, StyleSheet, Dimensions } from "react-native";
 import { BarChart } from "react-native-chart-kit";
 
 export default function Chart({type}) {
-    const screenWidth = Dimensions.get("window").width -50;
+    const screenWidth = Dimensions.get("window").width - 50;
     const [steps, setSteps] = useState<number[]>([]);
     const [info, setInfo] = useState<string[]>([]);
 
@@ -22,12 +22,10 @@ export default function Chart({type}) {
             setInfo(["Jan", "Feb", "Mrt", "Apr", "Mei", "Jun", "Jul", "Aug", "Sep", "Okt", "Nov", "Dec"]);
         }
 
-
     }, [type]);
 
         const data = {
-            labels: info, // Kept the labels
-
+            labels: info,
             datasets: [
                 {
                     data: steps,
@@ -36,6 +34,7 @@ export default function Chart({type}) {
     }
 
     const chartConfig = {
+        //     Joost mag weten waarom ze dit zo kut hebben gemaakt, maar hij MOET een gradient hebben. idk why...
         backgroundGradientFrom: "#4DBBCF",
         backgroundGradientTo: "#4DBBCF",
 
@@ -47,6 +46,10 @@ export default function Chart({type}) {
         color: () => "#fff",
         barPercentage: type === "year" ? 0.4 : 0.8,
         // barRadius: 10,
+        propsForLabels: {
+            fontSize: 12,
+            fontFamily: "Ubuntu",
+        }
     };
 
     return (
@@ -54,16 +57,16 @@ export default function Chart({type}) {
             <BarChart
                 style={styles.graphStyle}
                 data={data}
-                width={screenWidth}
-                height={170}
-                yAxisLabel=""                // Label for y-axis (if needed)
-                yAxisSuffix=""               // Empty suffix to fix TS error
+                width={330}
+                height={170} // kan niet korter anders X as fucked
+                yAxisLabel=""  // moet mt zijn
+                yAxisSuffix="" // moet ook mt zijn
                 chartConfig={chartConfig}
-                withVerticalLabels={true}   // Disables y-axis labels
+                withVerticalLabels={true}  // idk  waarom heeft empty moet zijn terwijl ik m disable anders is alles kapot.
                 withHorizontalLabels={false}
                 fromZero={true}
                 showBarTops={false}
-                withInnerLines={true} // design = false but like this one more.
+                withInnerLines={false}
             />
         </View>
     );
@@ -81,7 +84,9 @@ const styles = StyleSheet.create({
         margin:0,
         padding: 0,
         paddingRight: 0,
-        paddingBottom: 100,
         borderRadius: 10,
+        justifyContent: "center",
+        alignItems: "center",
+
     },
 });
