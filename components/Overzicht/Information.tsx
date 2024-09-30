@@ -34,11 +34,9 @@ const styles = StyleSheet.create({
 
     container: {
         flex: 1,
-        justifyContent: "center", // Horizontally center img and box
     },
 
     items: {
-        width: "100%",
         paddingHorizontal: 5,
         padding: 10,
         backgroundColor: "#4DBBCF",
@@ -55,8 +53,7 @@ const styles = StyleSheet.create({
 
     text: {
         color: "#fff",
-        fontFamily: "Exo",
-        fontSize: 18,
+        fontSize: 16,
     },
 
     img: {

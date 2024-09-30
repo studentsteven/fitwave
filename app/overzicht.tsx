@@ -1,7 +1,7 @@
 import Navigation from "@/components/navigation/Navigation";
 import {GluestackUIProvider} from "@/components/ui/gluestack-ui-provider";
 import "@/global.css";
-import {View, Text, TouchableOpacity, StyleSheet, Animated, ScrollView} from "react-native";
+import {View, Text, TouchableOpacity, StyleSheet,} from "react-native";
 import React from "react";
 import Average from "@/components/Overzicht/Average";
 import Chart from "@/components/Overzicht/Chart";
@@ -65,7 +65,6 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         justifyContent: "space-around",
         width: "100%",
-        marginVertical: 0,
     },
 
     underline: {
@@ -73,19 +72,17 @@ const styles = StyleSheet.create({
     },
 
     typeText: {
-        fontFamily: "Expo",
     },
     items: {
         flexDirection: "column",
         justifyContent: "space-between",
     },
     average: {
-        flex: 0.5, // Takes up a fraction of the available space
+        flex: 0.5,
     },
 
     chart: {
-        flex: 0.5,
-
+        flex: 0.6,
     },
 
     information: {

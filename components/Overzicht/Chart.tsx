@@ -58,7 +58,7 @@ export default function Chart({type}) {
                 style={styles.graphStyle}
                 data={data}
                 width={330}
-                height={170} // kan niet korter anders X as fucked
+                height={168} // kan niet korter anders X as fucked
                 yAxisLabel=""  // moet mt zijn
                 yAxisSuffix="" // moet ook mt zijn
                 chartConfig={chartConfig}

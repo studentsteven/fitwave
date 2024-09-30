@@ -19,15 +19,15 @@ export default function Average() {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
+        flex: 0.8,
         flexDirection: "row",
         justifyContent: "center", // Horizontally center img and box
         alignItems: "center", // Vertically center content in the middle of the view
     },
 
     img: {
-        width: 110,
-        height: 110,
+        width: 100,
+        height: 100,
         marginRight: 20,
     },
 
@@ -36,19 +36,17 @@ const styles = StyleSheet.create({
         backgroundColor: "#4DBBCF",
         borderRadius: 10,
         width: 210,
-        height: 100,
+        height: 90,
     },
 
     averageStepsText: {
         textAlign: "center",
         color: "#fff",
-        fontFamily: "Expo",
     },
 
     averageStepsDynamic: {
         textAlign: "center",
         color: "#fff",
-        fontSize: 40,
-        fontFamily: "Expo",
+        fontSize: 37,
     },
 });
