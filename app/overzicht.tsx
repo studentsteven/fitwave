@@ -19,7 +19,7 @@ export default function App() {
                         <View style={styles.TypeSelector}>
                             <TouchableOpacity onPress={() => setTypeO("day")}>
                                 <Text style={[styles.typeText, typeO === "day" && styles.underline]}>
-                                    Day
+                                    dag
                                 </Text>
                             </TouchableOpacity>
 
