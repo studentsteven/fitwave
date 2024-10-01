@@ -33,6 +33,8 @@ export default function App() {
             valuetext="calorieën"
             max={2500}
             circlesize={200}
+            strokeWidth={10}
+            color={"#e6e6e6"}
           />
           <View style={styles.voedingsbox}>
             <Text style={styles.boxtitel}>Voedingslijst</Text>
