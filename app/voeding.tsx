@@ -34,7 +34,8 @@ export default function App() {
             max={2500}
             circlesize={200}
             strokeWidth={10}
-            color={"#e6e6e6"}
+            BGcolor={"#e6e6e6"}
+            colorStroke={"#ff6347"}
           />
           <View style={styles.voedingsbox}>
             <Text style={styles.boxtitel}>Voedingslijst</Text>
