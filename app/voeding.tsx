@@ -1,13 +1,11 @@
 import Caltoevoegen from "@/components/calToevoegen";
 import Navigation from "@/components/navigation/Navigation";
 import CircularProgress from "@/components/Progress";
-import { Box } from "@/components/ui/box";
 import { GluestackUIProvider } from "@/components/ui/gluestack-ui-provider";
 import "@/global.css";
-import { StyleSheet, View, Text, ScrollView } from "react-native";
+import { ScrollView, StyleSheet, Text, View } from "react-native";
 
 export default function App() {
-  // Sample data for the list of food items
   const foodItems = [
     { id: 1, name: "Broodje Kroket", calories: 700 },
     { id: 2, name: "Appel", calories: 95 },
@@ -61,7 +59,7 @@ const styles = StyleSheet.create({
     padding: 7,
     borderRadius: 10,
     height: 220,
-    overflow: "hidden", // Hide overflow if needed, but will use ScrollView for scrolling
+    overflow: "hidden",
   },
   boxtitel: {
     color: "white",
