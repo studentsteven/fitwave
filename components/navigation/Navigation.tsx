@@ -3,6 +3,7 @@ import { Card } from "../ui/card";
 import Footer from "./Footer";
 import Header from "./Header";
 import { useUserData } from "../useUserData";
+import React from "react";
 
 type NavigationProps = {
   children: React.ReactNode;
@@ -29,6 +30,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   card: {
+    zIndex: 1,
     backgroundColor: "white",
     flex: 1,
     borderTopRightRadius: 25,
@@ -41,6 +43,7 @@ const styles = StyleSheet.create({
       width: 0,
       height: 2,
     },
+
     shadowOpacity: 1,
     shadowRadius: 3.5,
     // Schaduw voor Android

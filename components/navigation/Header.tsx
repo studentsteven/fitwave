@@ -125,7 +125,7 @@ const styles = StyleSheet.create({
     top: 65,
     backgroundColor: "white",
     padding: 12,
-    zIndex: 99,
+    zIndex: 2,
     elevation: 50,
     borderRadius: 12,
     alignSelf: 'flex-start'
