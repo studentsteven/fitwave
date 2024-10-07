@@ -12,6 +12,8 @@ import { Heading } from "../ui/heading";
 import { useRouter } from "expo-router";
 import { useState } from "react";
 import Button from "../Button";
+import {router, useRouter} from "expo-router";
+
 
 type HeaderProps = {
   achtergrond: string;
@@ -73,7 +75,7 @@ export default function Header({ achtergrond, titel, username }: HeaderProps) {
               <Pressable style={[styles.menuBtn, { borderTopWidth: 1, borderTopColor: "#E2E2E2"}]}><Text style={styles.menuBtnText}>Profiel</Text></Pressable>
               <Pressable style={styles.menuBtn}><Text style={styles.menuBtnText}>Vrienden</Text></Pressable>
               <Pressable style={styles.menuBtn}><Text style={styles.menuBtnText}>Instellingen</Text></Pressable>
-              <Pressable style={styles.menuBtn}><Text style={styles.menuBtnText}>Profiel</Text></Pressable>
+              <Pressable style={styles.menuBtn} onPress={() => router.push("/Achievements")}><Text style={styles.menuBtnText}>Profiel</Text></Pressable>
 
               <View style={{marginTop: 15}}>
                 <Button text="Uitloggen" type="danger" />
@@ -102,6 +104,8 @@ const styles = StyleSheet.create({
   },
   heading: {
     color: "white",
+    fontSize: Platform.OS === "ios" ? 25 : 35,
+
   },
   account: {
     color: "white",
@@ -129,12 +133,12 @@ const styles = StyleSheet.create({
     position: "absolute",
   },
   menu: {
-    position: "absolute",
+    position: Platform.OS === "ios" ? "relative" : "absolute",
     right: 0,
     top: 65,
     backgroundColor: "white",
     padding: 12,
-    zIndex: 99,
+    zIndex: 2,
     elevation: 50,
     borderRadius: 12,
     alignSelf: 'flex-start'

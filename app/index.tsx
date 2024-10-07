@@ -78,8 +78,11 @@ export default function Login() {
 
         <Button text="Inloggen" pressFunc={handleSubmit} type="primary" />
 
+
         <Text style={{marginTop: 12, marginBottom: 12, color: "#fff"}}>- Heb je nog geen account? -</Text>
         <Button link="/registreren" type="secondary" text="Registreren" />
+        <Button link="/Achievements" type="secondary" text="test" />
+
       </View>
     </View>
   );
