@@ -5,9 +5,11 @@ import {
   View,
   Platform,
   Text,
-  Pressable,
+  TouchableOpacity,
+  Pressable
 } from "react-native";
 import { Heading } from "../ui/heading";
+import { useRouter } from "expo-router";
 import { useState } from "react";
 import Button from "../Button";
 
@@ -19,6 +21,10 @@ type HeaderProps = {
 
 export default function Header({ achtergrond, titel, username }: HeaderProps) {
   const [menuVisible, setMenuVisible] = useState(false);
+  const router = useRouter();
+
+  const handleNotificationPress = () => {
+    router.push("/notifications");
 
   const toggleMenu = () => {
     setMenuVisible(prevState => !prevState); // Toggle de huidige waarde
@@ -42,13 +48,16 @@ export default function Header({ achtergrond, titel, username }: HeaderProps) {
           {titel}
         </Heading>
         <View style={styles.settings}>
-          <View style={{ display: "flex", alignItems: "center" }}>
+          <TouchableOpacity
+            style={{ display: "flex", alignItems: "center" }}
+            onPress={handleNotificationPress}
+          >
             <Image
               style={styles.notificaties}
               source={require("@/assets/notificaties.png")}
             />
             <Text style={styles.notificatiestext}>Notificaties</Text>
-          </View>
+          </TouchableOpacity>
           <Pressable style={{ display: "flex", alignItems: "center" }} onPress={toggleMenu}>
             <Image
               style={styles.pf}
@@ -84,7 +93,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     padding: Platform.OS === "ios" ? 20 : 20,
     paddingVertical: 30,
-    paddingHorizontal: 20
+    paddingHorizontal: 20,
   },
   settings: {
     display: "flex",

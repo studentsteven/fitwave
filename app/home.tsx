@@ -1,5 +1,4 @@
 import Navigation from "@/components/navigation/Navigation";
-import {GluestackUIProvider} from "@/components/ui/gluestack-ui-provider";
 import "@/global.css";
 import {Text, View, StyleSheet, Dimensions, TouchableOpacity} from "react-native";
 import Bol from "@/components/navigation/Bol";

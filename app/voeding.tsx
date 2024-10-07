@@ -1,7 +1,6 @@
 import Caltoevoegen from "@/components/calToevoegen";
 import Navigation from "@/components/navigation/Navigation";
 import CircularProgress from "@/components/Progress";
-import { GluestackUIProvider } from "@/components/ui/gluestack-ui-provider";
 import "@/global.css";
 import { ScrollView, StyleSheet, Text, View } from "react-native";
 
@@ -50,8 +49,9 @@ export default function App() {
           </View>
           <Caltoevoegen />
         </View>
-      </Navigation>
-    </GluestackUIProvider>
+        <Caltoevoegen />
+      </View>
+    </Navigation>
   );
 }
 
