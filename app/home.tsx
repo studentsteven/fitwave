@@ -3,7 +3,7 @@ import "@/global.css";
 import {Text, View, StyleSheet, Dimensions, TouchableOpacity} from "react-native";
 import Bol from "@/components/navigation/Bol";
 import CircularProgress from "@/components/Progress";
-import {useRouter} from "expo-router";
+import {router, useRouter} from "expo-router";
 
 export default function App() {
     //data wanneer api koppeling moet anders. voor nu goed.
