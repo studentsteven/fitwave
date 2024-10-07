@@ -3,6 +3,7 @@ import { Card } from "../ui/card";
 import Footer from "./Footer";
 import Header from "./Header";
 import { useUserData } from "../useUserData";
+import { GluestackUIProvider } from "../ui/gluestack-ui-provider";
 
 type NavigationProps = {
   children: React.ReactNode;
@@ -10,17 +11,23 @@ type NavigationProps = {
   title: string;
 };
 
-export default function Navigation({ children, background, title }: NavigationProps) {
+export default function Navigation({
+  children,
+  background,
+  title,
+}: NavigationProps) {
   const { username, email, userId } = useUserData();
 
   return (
-    <View style={styles.container}>
-      <Header achtergrond={background} titel={title} username={username} />
-      <Card style={styles.card}>
-        <View style={styles.childrenContainer}>{children}</View>
-      </Card>
-      <Footer />
-    </View>
+    <GluestackUIProvider>
+      <View style={styles.container}>
+        <Header achtergrond={background} titel={title} username={username} />
+        <Card style={styles.card}>
+          <View style={styles.childrenContainer}>{children}</View>
+        </Card>
+        <Footer />
+      </View>
+    </GluestackUIProvider>
   );
 }
 

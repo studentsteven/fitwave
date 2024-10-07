@@ -19,35 +19,32 @@ export default function App() {
   ];
 
   return (
-    <GluestackUIProvider mode="light">
-      <Navigation
-        background="https://www.athenas.nl/wp-content/uploads/voeding-thema-athenas.jpg"
-        title="Voeding"
-      >
-        <View style={styles.container}>
-          <CircularProgress
-            value={2000}
-            valuetext="calorieën"
-            max={2500}
-            circlesize={200}
-            strokeWidth={10}
-            BGcolor={"#e6e6e6"}
-            colorStroke={"#ff6347"}
-          />
-          <View style={styles.voedingsbox}>
-            <Text style={styles.boxtitel}>Voedingslijst</Text>
-            <ScrollView>
-              {foodItems.map((item) => (
-                <View key={item.id} style={styles.lijstcomponent}>
-                  <Text style={styles.tekstcomponent}>
-                    {item.id} | {item.name}
-                  </Text>
-                  <Text style={styles.tekstcomponent}>{item.calories} cal</Text>
-                </View>
-              ))}
-            </ScrollView>
-          </View>
-          <Caltoevoegen />
+    <Navigation
+      background="https://www.athenas.nl/wp-content/uploads/voeding-thema-athenas.jpg"
+      title="Voeding"
+    >
+      <View style={styles.container}>
+        <CircularProgress
+          value={2000}
+          valuetext="calorieën"
+          max={2500}
+          circlesize={200}
+          strokeWidth={10}
+          BGcolor={"#e6e6e6"}
+          colorStroke={"#ff6347"}
+        />
+        <View style={styles.voedingsbox}>
+          <Text style={styles.boxtitel}>Voedingslijst</Text>
+          <ScrollView>
+            {foodItems.map((item) => (
+              <View key={item.id} style={styles.lijstcomponent}>
+                <Text style={styles.tekstcomponent}>
+                  {item.id} | {item.name}
+                </Text>
+                <Text style={styles.tekstcomponent}>{item.calories} cal</Text>
+              </View>
+            ))}
+          </ScrollView>
         </View>
         <Caltoevoegen />
       </View>
