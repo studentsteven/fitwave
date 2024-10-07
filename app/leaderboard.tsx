@@ -1,5 +1,4 @@
 import Navigation from "@/components/navigation/Navigation";
-import { GluestackUIProvider } from "@/components/ui/gluestack-ui-provider";
 import "@/global.css";
 import { useState } from "react";
 import {
@@ -77,46 +76,44 @@ export default function App() {
   const displayedPlayers = typeO === "vrienden" ? friendPlayers : allPlayers;
 
   return (
-    <GluestackUIProvider mode="light">
-      <Navigation
-        background="https://images.westend61.de/0000049697pw/winners-podium-in-grass-field-TCF00518.jpg"
-        title="Leaderboard"
-      >
-        <View>
-          <View style={styles.container}>
-            <TouchableOpacity onPress={() => setTypeO("vrienden")}>
-              <Text style={[typeO === "vrienden" && styles.underline]}>
-                Vrienden
-              </Text>
-            </TouchableOpacity>
+    <Navigation
+      background="https://images.westend61.de/0000049697pw/winners-podium-in-grass-field-TCF00518.jpg"
+      title="Leaderboard"
+    >
+      <View>
+        <View style={styles.container}>
+          <TouchableOpacity onPress={() => setTypeO("vrienden")}>
+            <Text style={[typeO === "vrienden" && styles.underline]}>
+              Vrienden
+            </Text>
+          </TouchableOpacity>
 
-            <TouchableOpacity onPress={() => setTypeO("iedereen")}>
-              <Text style={[typeO === "iedereen" && styles.underline]}>
-                Iedereen
-              </Text>
-            </TouchableOpacity>
-          </View>
-          <View style={styles.voedingsbox}>
-            <View style={styles.boxtitel}>
-              <Text style={styles.voedingstitel}>Leaderboard</Text>
-              <Text style={{ color: "white" }}>Punten</Text>
-            </View>
-            <ScrollView>
-              {displayedPlayers.map((item) => (
-                <View key={item.id} style={styles.lijstcomponent}>
-                  <Text style={styles.tekstcomponent}>
-                    {item.id} | {item.name}
-                  </Text>
-                  <Text style={styles.tekstcomponent}>
-                    {item.punten.toLocaleString("nl-NL")}
-                  </Text>
-                </View>
-              ))}
-            </ScrollView>
-          </View>
+          <TouchableOpacity onPress={() => setTypeO("iedereen")}>
+            <Text style={[typeO === "iedereen" && styles.underline]}>
+              Iedereen
+            </Text>
+          </TouchableOpacity>
         </View>
-      </Navigation>
-    </GluestackUIProvider>
+        <View style={styles.voedingsbox}>
+          <View style={styles.boxtitel}>
+            <Text style={styles.voedingstitel}>Leaderboard</Text>
+            <Text style={{ color: "white" }}>Punten</Text>
+          </View>
+          <ScrollView>
+            {displayedPlayers.map((item) => (
+              <View key={item.id} style={styles.lijstcomponent}>
+                <Text style={styles.tekstcomponent}>
+                  {item.id} | {item.name}
+                </Text>
+                <Text style={styles.tekstcomponent}>
+                  {item.punten.toLocaleString("nl-NL")}
+                </Text>
+              </View>
+            ))}
+          </ScrollView>
+        </View>
+      </View>
+    </Navigation>
   );
 }
 

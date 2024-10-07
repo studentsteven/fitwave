@@ -5,8 +5,10 @@ import {
   View,
   Platform,
   Text,
+  TouchableOpacity,
 } from "react-native";
 import { Heading } from "../ui/heading";
+import { useRouter } from "expo-router";
 
 type HeaderProps = {
   achtergrond: string;
@@ -14,6 +16,12 @@ type HeaderProps = {
 };
 
 export default function Header({ achtergrond, titel }: HeaderProps) {
+  const router = useRouter();
+
+  const handleNotificationPress = () => {
+    router.push("/notifications");
+  };
+
   return (
     <View style={{ position: "relative" }}>
       <ImageBackground
@@ -32,13 +40,16 @@ export default function Header({ achtergrond, titel }: HeaderProps) {
           {titel}
         </Heading>
         <View style={styles.settings}>
-          <View style={{ display: "flex", alignItems: "center" }}>
+          <TouchableOpacity
+            style={{ display: "flex", alignItems: "center" }}
+            onPress={handleNotificationPress}
+          >
             <Image
               style={styles.notificaties}
               source={require("@/assets/notificaties.png")}
             />
             <Text style={styles.notificatiestext}>Notificaties</Text>
-          </View>
+          </TouchableOpacity>
           <View>
             <Image
               style={styles.pf}
@@ -62,7 +73,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     padding: Platform.OS === "ios" ? 20 : 20,
     paddingVertical: 30,
-    paddingHorizontal: 20
+    paddingHorizontal: 20,
   },
   settings: {
     display: "flex",
