@@ -92,8 +92,8 @@ export default function Header({ achtergrond, titel, username }: HeaderProps) {
             <Pressable style={styles.menuBtn}>
               <Text style={styles.menuBtnText}>Instellingen</Text>
             </Pressable>
-            <Pressable style={styles.menuBtn}>
-              <Text style={styles.menuBtnText}>Profiel</Text>
+            <Pressable style={styles.menuBtn} onPress={() => router.push("/Achievements")}>
+              <Text style={styles.menuBtnText}>Achievements</Text>
             </Pressable>
 
             <View style={{ marginTop: 15 }}>
