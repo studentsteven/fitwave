@@ -6,20 +6,28 @@ import {
   Platform,
   Text,
   TouchableOpacity,
+  Pressable
 } from "react-native";
 import { Heading } from "../ui/heading";
 import { useRouter } from "expo-router";
+import { useState } from "react";
+import Button from "../Button";
 
 type HeaderProps = {
   achtergrond: string;
   titel: string;
+  username: string;
 };
 
-export default function Header({ achtergrond, titel }: HeaderProps) {
+export default function Header({ achtergrond, titel, username }: HeaderProps) {
+  const [menuVisible, setMenuVisible] = useState(false);
   const router = useRouter();
 
   const handleNotificationPress = () => {
     router.push("/notifications");
+
+  const toggleMenu = () => {
+    setMenuVisible(prevState => !prevState); // Toggle de huidige waarde
   };
 
   return (
@@ -50,15 +58,27 @@ export default function Header({ achtergrond, titel }: HeaderProps) {
             />
             <Text style={styles.notificatiestext}>Notificaties</Text>
           </TouchableOpacity>
-          <View>
+          <Pressable style={{ display: "flex", alignItems: "center" }} onPress={toggleMenu}>
             <Image
               style={styles.pf}
               source={{
-                uri: "https://media.licdn.com/dms/image/v2/D4E03AQFjCU2kJviPyg/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1708070941708?e=1732147200&v=beta&t=d0g3gVL9XNIr-LKvJj08J3jGWvbMEVbECSAZA6_ak3Y",
+                uri: "https://static.vecteezy.com/system/resources/previews/009/292/244/non_2x/default-avatar-icon-of-social-media-user-vector.jpg",
               }}
             />
-            <Text style={styles.account}>Account</Text>
-          </View>
+            <Text style={styles.account}>{ username }</Text>
+          </Pressable>
+
+          <View style={menuVisible ? styles.menu : {display: "none"}}>
+              <Text style={{fontSize: 21, fontWeight: "bold", marginBottom: 12}}>Welkom { username }!</Text>
+              <Pressable style={[styles.menuBtn, { borderTopWidth: 1, borderTopColor: "#E2E2E2"}]}><Text style={styles.menuBtnText}>Profiel</Text></Pressable>
+              <Pressable style={styles.menuBtn}><Text style={styles.menuBtnText}>Vrienden</Text></Pressable>
+              <Pressable style={styles.menuBtn}><Text style={styles.menuBtnText}>Instellingen</Text></Pressable>
+              <Pressable style={styles.menuBtn}><Text style={styles.menuBtnText}>Profiel</Text></Pressable>
+
+              <View style={{marginTop: 15}}>
+                <Button text="Uitloggen" type="danger" />
+              </View>
+            </View>
         </View>
       </View>
     </View>
@@ -108,4 +128,23 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     position: "absolute",
   },
+  menu: {
+    position: "absolute",
+    right: 0,
+    top: 65,
+    backgroundColor: "white",
+    padding: 12,
+    zIndex: 99,
+    elevation: 50,
+    borderRadius: 12,
+    alignSelf: 'flex-start'
+  },
+  menuBtn: {
+    paddingVertical: 5,
+    borderBottomWidth: 1,
+    borderBottomColor: "#E2E2E2"
+  },
+  menuBtnText: {
+    fontSize: 18
+  }
 });
