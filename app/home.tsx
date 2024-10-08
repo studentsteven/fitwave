@@ -12,7 +12,6 @@ import {
   View,
 } from "react-native";
 
-
 export default function App() {
   const { username, email, userId } = useUserData();
   //data wanneer api koppeling moet anders. voor nu goed.

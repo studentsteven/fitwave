@@ -3,6 +3,7 @@ import { View, Text, StyleSheet } from "react-native";
 import Svg, { Circle } from "react-native-svg";
 
 const CircularProgress = ({ value, valuetext, max, circlesize, strokeWidth, BGcolor, colorStroke}) => {
+
   var circumference = 0;
   const radius = (circlesize - strokeWidth) / 2;
   if (value > max) {

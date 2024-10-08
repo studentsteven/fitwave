@@ -13,21 +13,30 @@ export default function App() {
         title="Workout"
       >
         <View style={styles.container}>
-          <CircularProgress value={'12'} valuetext={'Kilometer'} max={'30'} circlesize={150} strokeWidth={undefined} BGcolor={undefined} colorStroke={undefined} />
-          
-          <Text style={styles.badgeText}>Nog 18 kilometer voor een badge!</Text>
-
-          <Image 
-            source={{ uri: 'https://cdn-icons-png.flaticon.com/512/1435/1435715.png' }}
-            style={styles.badgeImage}
+          <CircularProgress
+            value={"12"}
+            valuetext={"Kilometer"}
+            max={"30"}
+            circlesize={150}
+            strokeWidth={10}
+            BGcolor={"#e6e6e6"}
+            colorStroke={"#ff6347"}
           />
 
+          <Text style={styles.badgeText}>Nog 18 kilometer voor een badge!</Text>
+
+          <Image
+            source={{
+              uri: "https://cdn-icons-png.flaticon.com/512/1435/1435715.png",
+            }}
+            style={styles.badgeImage}
+          />
         </View>
         <View style={styles.test}>
-            <View style={styles.button}>
-              <Button text="Workout!" link="/workoutPlan" />
-            </View>
+          <View style={styles.button}>
+            <Button text="Workout!" link="/workoutPlan" />
           </View>
+        </View>
       </Navigation>
     </GluestackUIProvider>
   );
@@ -36,31 +45,31 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    display: 'flex',
-    justifyContent: 'space-around',
-    alignItems: 'center',
-    marginBottom: '10%'
+    display: "flex",
+    justifyContent: "space-around",
+    alignItems: "center",
+    marginBottom: "10%",
   },
   badgeText: {
-    fontSize: 16,   // Aangepaste grootte voor de tekst
-    color: '#000',
-    fontWeight: 'bold',
+    fontSize: 16, // Aangepaste grootte voor de tekst
+    color: "#000",
+    fontWeight: "bold",
   },
   badgeImage: {
-    width: 70,  // Breedte van de afbeelding
-    height: 70,  // Hoogte van de afbeelding
+    width: 70, // Breedte van de afbeelding
+    height: 70, // Hoogte van de afbeelding
   },
   button: {
     backgroundColor: "#4DBBCF",
     padding: 5,
     borderRadius: 10,
-    width: '60%',
+    width: "60%",
   },
   buttonText: {
     color: "#fff",
     fontSize: 16,
   },
   test: {
-    alignItems: 'center'
-  }
+    alignItems: "center",
+  },
 });
