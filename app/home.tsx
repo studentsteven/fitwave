@@ -12,18 +12,20 @@ import CircularProgress from "@/components/Progress";
 import { GluestackUIProvider } from "@/components/ui/gluestack-ui-provider";
 import "@/global.css";
 import { router, useRouter } from "expo-router";
+import { useUserData } from "@/components/useUserData";
 
 
 export default function App() {
+  const { username, email, userId } = useUserData();
   //data wanneer api koppeling moet anders. voor nu goed.
-  const array = ["Ma", "Di", "wo", "do", "vr"];
+  const array = ["Ma", "Di", "Wo", "Do", "Vr"];
   const color = ["#4DBBCF", "#4DBBCF", "#e6e6e6", "#e6e6e6", "#4DBBCF"];
   const screenWidth = Dimensions.get("window").width - 50;
   const router = useRouter();
   const LeaderBordHome = [
     { id: 1, name: "Wim", punten: 700 },
     { id: 2, name: "Henk", punten: 95 },
-    { id: 3, name: "Lars (U)", punten: 285 },
+    { id: 3, name: `${username} (U)`, punten: 285 },
     { id: 4, name: "Willem", punten: 150 },
     { id: 5, name: "Frank", punten: 210 },
   ];

@@ -1,6 +1,8 @@
 import Navigation from "@/components/navigation/Navigation";
+import { useUserData } from "@/components/useUserData";
 import "@/global.css";
 import { useRouter } from "expo-router";
+import { useEffect, useState } from "react";
 import {
   Image,
   Pressable,
@@ -10,18 +12,40 @@ import {
   View,
 } from "react-native";
 
+
 export default function App() {
-  const notifications = [
-    { id: 1, name: "Pieter" },
-    { id: 2, name: "Hans" },
-    { id: 3, name: "Nico" },
-    { id: 4, name: "Toeradev" },
-    { id: 5, name: "Stevenem" },
-    { id: 6, name: "Jan" },
-    { id: 7, name: "Henk" },
-    { id: 8, name: "Donald Trump" },
-    { id: 9, name: "Mark Rutte" },
-  ];
+  const [notifications, setNotifications] = useState([]);
+  const { username, email, userId } = useUserData();
+
+  useEffect(() => {
+    const fetchFriendRequests = async () => {
+      try {
+        const response = await fetch('https://www.fitwave.stevenem.nl/friendrequests?apiKey=We<3Fitwave', {
+          method: 'POST',
+          headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+              user_id: userId
+          }),
+        });
+
+        const data = await response.json();
+        if (Array.isArray(data)) { // Check of het antwoord een array is
+          setNotifications(data);
+        } else {
+          console.log("API response is not an array:", data);
+        }
+      } catch (error) {
+        console.log("Fetch error:", error);
+      }
+    };
+
+    if (userId) { // Voeg een controle toe om te zorgen dat userId bestaat
+      fetchFriendRequests();
+    }
+  }, [userId]);
 
   const router = useRouter();
 
@@ -31,28 +55,26 @@ export default function App() {
 
   return (
     <Navigation
-      background="https://www.athenas.nl/wp-content/uploads/voeding-thema-athenas.jpg"
+      background="https://hsvdenhaag.nl/wp-content/uploads/2021/02/Klokkenluidersregeling-440x293.jpg"
       title="Notificaties"
     >
       <ScrollView>
         {notifications.map((notification) => (
-          <View key={notification.id} style={styles.notibox}>
+          <Pressable onPress={tofriends} key={notification.id} style={styles.notibox}>
             <Image
               style={styles.pf}
               source={{
-                uri: "https://www.autismeexpertise.nl/wp-content/uploads/2019/02/profielfoto.png",
+                uri: "https://static.vecteezy.com/system/resources/previews/009/292/244/non_2x/default-avatar-icon-of-social-media-user-vector.jpg",
               }}
             />
             <View style={styles.text}>
               <Text style={styles.notitext}>
-                <Text style={{ fontWeight: "bold" }}>{notification.name}</Text>
+                <Text style={{ fontWeight: "bold" }}>{ notification.username1 == username ? notification.username2 : notification.username1 }</Text>
                 <Text> wil vrienden met je worden</Text>
               </Text>
             </View>
-            <Pressable onPress={tofriends}>
-              <Text style={styles.meer}>{">"}</Text>
-            </Pressable>
-          </View>
+            <Text style={styles.meer}>{">"}</Text>
+          </Pressable>
         ))}
       </ScrollView>
     </Navigation>
