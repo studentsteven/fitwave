@@ -15,16 +15,13 @@ export default function App() {
         <View style={styles.container}>
           <CircularProgress value={'12'} valuetext={'Kilometer'} max={'30'} circlesize={150} />
           
-          {/* Tekst voor "Nog 18 kilometer voor een badge!" */}
           <Text style={styles.badgeText}>Nog 18 kilometer voor een badge!</Text>
 
-          {/* Image veld voor de badge */}
           <Image 
-            source={{ uri: 'https://cdn-icons-png.flaticon.com/512/1435/1435715.png' }}  // Voeg hier de link van je badge toe
+            source={{ uri: 'https://cdn-icons-png.flaticon.com/512/1435/1435715.png' }}
             style={styles.badgeImage}
           />
 
-          {/* Button */}
         </View>
         <View style={styles.test}>
             <View style={styles.button}>
@@ -40,8 +37,9 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     display: 'flex',
-    justifyContent: 'space-evenly',
-    alignItems: 'center'
+    justifyContent: 'space-around',
+    alignItems: 'center',
+    marginBottom: '10%'
   },
   badgeText: {
     fontSize: 16,   // Aangepaste grootte voor de tekst
@@ -51,7 +49,6 @@ const styles = StyleSheet.create({
   badgeImage: {
     width: 70,  // Breedte van de afbeelding
     height: 70,  // Hoogte van de afbeelding
-    marginBottom: 100,
   },
   button: {
     backgroundColor: "#4DBBCF",

@@ -9,7 +9,7 @@ export default function App() {
     <GluestackUIProvider mode="light">
       <Navigation
         background="https://tapoutdrinks.com/wp-content/uploads/2021/03/beautiful-fit-people-working-out-in-gym-together-NH4EV43.jpg"
-        title="Workout"
+        title="Afvallen"
       >
         <View style={styles.container}>
           {/* Scrollbare tekst */}
@@ -25,7 +25,7 @@ export default function App() {
                 <Text style={styles.subHeader}>Frequentie:</Text> 4-5 dagen per week
                 {'\n'}
                 <Text style={styles.subHeader}>Duur:</Text> 45-60 minuten per sessie
-                {'\n\n'}
+                {'\n\n\n\n'}
                 
                 <Text style={styles.subHeader}>Dag 1: Krachttraining (Full Body)</Text>
                 {'\n\n'}
@@ -55,21 +55,21 @@ export default function App() {
                 
                 
 
-                <Text style={styles.subHeader}>Afkoelen (5-10 minuten)</Text>
+                <Text style={styles.subHeader}>Afkoelen (5-10 minuten)  </Text>
+                {'\n'}
                 Sluit af met een paar minuten rekken om de spieren te ontspannen.
-                {'\n\n'}
+                {'\n\n\n\n'}
                 
                 <Text style={styles.subHeader}>Dag 2: Cardiotraining</Text>
-                {'\n'}
+                {'\n\n'}
                 <Text style={styles.subHeader}>Opwarming (5-10 minuten)</Text>
+                {'\n'}
                 Wandel of jog rustig om je hartslag te verhogen.
                 {'\n\n'}
                 
                 <Text style={styles.subHeader}>Intervaltraining (20-30 minuten)</Text>
                 <View style={styles.table}>
-                  <Text style={styles.tableHeader}>Intervaltype</Text>
-                  <Text style={styles.tableHeader}>Activiteit</Text>
-                  <Text style={styles.tableHeader}>Duur</Text>
+                
                   <Text style={styles.tableRow}>Hoge intensiteit</Text>
                   <Text style={styles.tableRow}>Sprint of fietsen</Text>
                   <Text style={styles.tableRow}>30 sec</Text>
@@ -82,23 +82,29 @@ export default function App() {
               
 
                 <Text style={styles.subHeader}>Cool down (5-10 minuten)</Text>
+                {'\n'}
                 Eindig met een rustige wandeling.
                 {'\n\n'}
 
                 <Text style={styles.subHeader}>Dag 3: Rust of Actieve Herstel</Text>
+                {'\n'}
                 Neem een rustdag of kies voor een actieve herstelactiviteit zoals yoga of een lichte wandeling. Dit helpt je lichaam te herstellen en voorbereid te zijn voor de volgende trainingssessie.
                 {'\n\n'}
 
                 <Text style={styles.subHeader}>Dag 4: Krachttraining (Circuit)</Text>
-                {'\n'}
+                {'\n\n'}
                 <Text style={styles.subHeader}>Opwarming (5-10 minuten)</Text>
-                Voer een korte opwarming uit om je spieren los te maken.
+                {'\n'}
+
+                <Text>Voer een korte opwarming uit om je spieren los te maken.</Text>
                 {'\n\n'}
                 
                 <Text style={styles.subHeader}>Circuittraining (3 rondes)</Text>
+                {'\n'}
                 <View style={styles.table}>
                   <Text style={styles.tableHeader}>Oefening</Text>
                   <Text style={styles.tableHeader}>Herhalingen</Text>
+                  
                   <Text style={styles.tableRow}>Jumping Jacks</Text>
                   <Text style={styles.tableRow}>15-20</Text>
                   <Text style={styles.tableRow}>Push-ups</Text>
@@ -139,7 +145,6 @@ const styles = StyleSheet.create({
   },
   scrollView: {
     width: '100%', // Zorg dat de ScrollView de volledige breedte heeft
-    padding: 10, // Binnenruimte voor ScrollView
   },
   textBox: {
     backgroundColor: '#FFFFFF', // Achtergrondkleur van het tekstvlak

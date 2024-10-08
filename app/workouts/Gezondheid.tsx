@@ -8,8 +8,8 @@ export default function App() {
   return (
     <GluestackUIProvider mode="light">
       <Navigation
-        background="https://health.clevelandclinic.org/wp-content/uploads/sites/3/2020/02/cardioworkout-770x553.jpg"
-        title="Workout"
+        background="https://tapoutdrinks.com/wp-content/uploads/2021/03/beautiful-fit-people-working-out-in-gym-together-NH4EV43.jpg"
+        title="Gezondheid"
       >
         <View style={styles.container}>
           {/* Scrollbare tekst */}
@@ -38,81 +38,24 @@ export default function App() {
                 {'\n\n'}
 
                 {/* Tabel voor Full Body workout */}
-                <View style={styles.tableWrapper}>
-                  <View style={styles.tableRow}>
-                    <Text style={styles.tableHeader}>Oefening</Text>
-                    <Text style={styles.tableHeader}>Herhalingen</Text>
-                  </View>
-                  <View style={styles.tableRow}>
-                    <Text style={styles.tableCell}>Squats</Text>
-                    <Text style={styles.tableCell}>12-15</Text>
-                  </View>
-                  <View style={styles.tableRow}>
-                    <Text style={styles.tableCell}>Push-ups</Text>
-                    <Text style={styles.tableCell}>10-12</Text>
-                  </View>
-                  <View style={styles.tableRow}>
-                    <Text style={styles.tableCell}>Lunges (per been)</Text>
-                    <Text style={styles.tableCell}>12</Text>
-                  </View>
-                  <View style={styles.tableRow}>
-                    <Text style={styles.tableCell}>Plank</Text>
-                    <Text style={styles.tableCell}>30-60 sec</Text>
-                  </View>
-                  <View style={styles.tableRow}>
-                    <Text style={styles.tableCell}>Jumping Jacks</Text>
-                    <Text style={styles.tableCell}>30 sec</Text>
-                  </View>
+                <View style={styles.table}>
+                  <Text style={styles.tableHeader}>Oefening</Text>
+                  <Text style={styles.tableHeader}>Herhalingen</Text>
+                  
+                  <Text style={styles.tableRow}>Squats</Text>
+                  <Text style={styles.tableRow}>15-20</Text>
+                  <Text style={styles.tableRow}>Push-ups</Text>
+                  <Text style={styles.tableRow}>10-12</Text>
+                  <Text style={styles.tableRow}>Lunges</Text>
+                  <Text style={styles.tableRow}>12 per been</Text>
+                  <Text style={styles.tableRow}>Plank (vasthouden)</Text>
+                  <Text style={styles.tableRow}>30-60 sec</Text>
+                  <Text style={styles.tableRow}>Deadlifts (met lichaamsgewicht of lichte gewichten)</Text>
+                  <Text style={styles.tableRow}>10-12</Text>
+
                 </View>
-
-                {'\n\n'}
-                
-                
-
-                <Text style={styles.subHeader}>Afkoelen (5-10 minuten)</Text>
-                Eindig met rekken voor de belangrijkste spiergroepen, zoals de benen, rug en schouders.
-                {'\n\n'}
-
-                <Text style={styles.subHeader}>Dag 2: Cardiovasculaire Training en Core</Text>
                 {'\n'}
-                <Text style={styles.subHeader}>Opwarming (5-10 minuten)</Text>
-                Begin met een lichte activiteit zoals wandelen of joggen om je hartslag te verhogen.
-                {'\n\n'}
 
-                <Text style={styles.subHeader}>Cardio Circuit (3 sets)</Text>
-                {'\n'}
-                Voer de volgende oefeningen uit zonder pauzes tussen de oefeningen. Rust 1 minuut na elke set.
-                {'\n\n'}
-
-                {/* Tabel voor Cardio Circuit */}
-                <View style={styles.tableWrapper}>
-                  <View style={styles.tableRow}>
-                    <Text style={styles.tableHeader}>Oefening</Text>
-                    <Text style={styles.tableHeader}>Tijd/Herhalingen</Text>
-                  </View>
-                  <View style={styles.tableRow}>
-                    <Text style={styles.tableCell}>Sprint op plaats</Text>
-                    <Text style={styles.tableCell}>30 sec</Text>
-                  </View>
-                  <View style={styles.tableRow}>
-                    <Text style={styles.tableCell}>Mountain Climbers</Text>
-                    <Text style={styles.tableCell}>30 sec</Text>
-                  </View>
-                  <View style={styles.tableRow}>
-                    <Text style={styles.tableCell}>High Knees</Text>
-                    <Text style={styles.tableCell}>30 sec</Text>
-                  </View>
-                  <View style={styles.tableRow}>
-                    <Text style={styles.tableCell}>Bicycle Crunches</Text>
-                    <Text style={styles.tableCell}>12-15</Text>
-                  </View>
-                  <View style={styles.tableRow}>
-                    <Text style={styles.tableCell}>Russian Twists</Text>
-                    <Text style={styles.tableCell}>20</Text>
-                  </View>
-                </View>
-
-                {'\n\n'}
 
                
 
@@ -121,9 +64,10 @@ export default function App() {
                 Stretch je buikspieren en onderrug.
                 {'\n\n'}
 
-                <Text style={styles.subHeader}>Dag 3: Flexibiliteit en Mobiliteit</Text>
+                <Text style={styles.subHeader}>Dag 2: Flexibiliteit en Mobiliteit</Text>
                 {'\n'}
                 <Text style={styles.subHeader}>Opwarming (5-10 minuten)</Text>
+                {'\n'}
                 Begin met lichte dynamische stretches zoals armcirkels en beenzwaaien.
                 {'\n\n'}
 
@@ -131,31 +75,21 @@ export default function App() {
                 {'\n\n'}
 
                 {/* Tabel voor Flexibiliteit en Mobiliteit */}
-                <View style={styles.tableWrapper}>
-                  <View style={styles.tableRow}>
-                    <Text style={styles.tableHeader}>Oefening</Text>
-                    <Text style={styles.tableHeader}>Tijd</Text>
-                  </View>
-                  <View style={styles.tableRow}>
-                    <Text style={styles.tableCell}>Downward Dog</Text>
-                    <Text style={styles.tableCell}>30 sec</Text>
-                  </View>
-                  <View style={styles.tableRow}>
-                    <Text style={styles.tableCell}>Child's Pose</Text>
-                    <Text style={styles.tableCell}>30 sec</Text>
-                  </View>
-                  <View style={styles.tableRow}>
-                    <Text style={styles.tableCell}>Cat-Cow Stretch</Text>
-                    <Text style={styles.tableCell}>10 reps</Text>
-                  </View>
-                  <View style={styles.tableRow}>
-                    <Text style={styles.tableCell}>Seated Forward Bend</Text>
-                    <Text style={styles.tableCell}>30 sec</Text>
-                  </View>
-                  <View style={styles.tableRow}>
-                    <Text style={styles.tableCell}>Hip Flexor Stretch</Text>
-                    <Text style={styles.tableCell}>30 sec per been</Text>
-                  </View>
+                <View style={styles.table}>
+                  <Text style={styles.tableHeader}>Oefening</Text>
+                  <Text style={styles.tableHeader}>Herhalingen</Text>
+                  
+                  <Text style={styles.tableRow}>Plank</Text>
+                  <Text style={styles.tableRow}>30-60 sec</Text>
+                  <Text style={styles.tableRow}>Push-ups</Text>
+                  <Text style={styles.tableRow}>10-12</Text>
+                  <Text style={styles.tableRow}>Russian Twists</Text>
+                  <Text style={styles.tableRow}>15 per kant</Text>
+                  <Text style={styles.tableRow}>Mountain Climbers</Text>
+                  <Text style={styles.tableRow}>30 sec</Text>
+                  <Text style={styles.tableRow}>Leg Raises</Text>
+                  <Text style={styles.tableRow}>10-12</Text>
+                 
                 </View>
 
                 {'\n\n'}
@@ -185,7 +119,7 @@ const styles = StyleSheet.create({
   },
   scrollView: {
     width: '100%', // Zorg dat de ScrollView de volledige breedte heeft
-    padding: 10, // Binnenruimte voor ScrollView
+    
   },
   textBox: {
     backgroundColor: '#FFFFFF', // Achtergrondkleur van het tekstvlak
@@ -218,27 +152,17 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  tableRow: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    marginBottom: 5,
-    width: '90%', // Breedte van de tabel
+
+  table: {
+    marginBottom: 10, // Tussenruimte onder de tabel
   },
   tableHeader: {
     fontWeight: 'bold',
     fontSize: 16,
-    textAlign: 'center',
-    flex: 1,
   },
-  tableCell: {
+  tableRow: {
     fontSize: 16,
-    textAlign: 'center',
-    flex: 1,
+    alignContent: "space-between"
   },
-  background: {
-    height: 200, // Hoogte van de foto
-    marginBottom: 20, // Afstand onder de foto
-    borderRadius: 10, // Maak de foto hoeken rond
-    overflow: 'hidden', // Zorg dat inhoud niet buiten de randen komt
-  },
+ 
 });
