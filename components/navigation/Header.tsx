@@ -112,7 +112,7 @@ export default function Header({ achtergrond, titel, username }: HeaderProps) {
             </Pressable>
 
             <View style={{ marginTop: 15 }}>
-              <Button text="Uitloggen" type="danger" />
+              <Button text="Uitloggen" pressFunc={uitloggen} type="danger" />
             </View>
           </View>
         </View>
