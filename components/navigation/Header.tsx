@@ -5,15 +5,47 @@ import {
   View,
   Platform,
   Text,
+  TouchableOpacity,
+  Pressable,
 } from "react-native";
 import { Heading } from "../ui/heading";
+import { useRouter } from "expo-router";
+import { useState } from "react";
+import Button from "../Button";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { router } from "expo-router";
 
 type HeaderProps = {
   achtergrond: string;
   titel: string;
+  username: string;
 };
 
-export default function Header({ achtergrond, titel }: HeaderProps) {
+export default function Header({ achtergrond, titel, username }: HeaderProps) {
+  const [menuVisible, setMenuVisible] = useState(false);
+  const router = useRouter();
+
+  const handleNotificationPress = () => {
+    router.push("/notifications");
+  };
+
+  const toggleMenu = () => {
+    setMenuVisible((prevState) => !prevState); // Toggle de huidige waarde
+  };
+
+  const uitloggen = async () => {
+    try {
+      await AsyncStorage.removeItem('username');
+      await AsyncStorage.removeItem('email');
+      await AsyncStorage.removeItem('userId');
+      
+      router.push('/');
+    }
+      catch(exception) {
+        alert('uitloggen is niet gelukt.')
+      }
+  }
+
   return (
     <View style={{ position: "relative" }}>
       <ImageBackground
@@ -32,21 +64,56 @@ export default function Header({ achtergrond, titel }: HeaderProps) {
           {titel}
         </Heading>
         <View style={styles.settings}>
-          <View style={{ display: "flex", alignItems: "center" }}>
+          <TouchableOpacity
+            style={{ display: "flex", alignItems: "center" }}
+            onPress={handleNotificationPress}
+          >
             <Image
               style={styles.notificaties}
               source={require("@/assets/notificaties.png")}
             />
             <Text style={styles.notificatiestext}>Notificaties</Text>
-          </View>
-          <View>
+          </TouchableOpacity>
+          <Pressable
+            style={{ display: "flex", alignItems: "center" }}
+            onPress={toggleMenu}
+          >
             <Image
               style={styles.pf}
               source={{
-                uri: "https://media.licdn.com/dms/image/v2/D4E03AQFjCU2kJviPyg/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1708070941708?e=1732147200&v=beta&t=d0g3gVL9XNIr-LKvJj08J3jGWvbMEVbECSAZA6_ak3Y",
+                uri: "https://static.vecteezy.com/system/resources/previews/009/292/244/non_2x/default-avatar-icon-of-social-media-user-vector.jpg",
               }}
             />
-            <Text style={styles.account}>Account</Text>
+            <Text style={styles.account}>{username}</Text>
+          </Pressable>
+
+          <View style={menuVisible ? styles.menu : { display: "none" }}>
+            <Text
+              style={{ fontSize: 21, fontWeight: "bold", marginBottom: 12 }}
+            >
+              Welkom {username}!
+            </Text>
+            <Pressable
+              style={[
+                styles.menuBtn,
+                { borderTopWidth: 1, borderTopColor: "#E2E2E2" },
+              ]}
+            >
+              <Text style={styles.menuBtnText}>Profiel</Text>
+            </Pressable>
+            <Pressable style={styles.menuBtn}>
+              <Text onPress={() => router.push('/vrienden')} style={styles.menuBtnText}>Vrienden</Text>
+            </Pressable>
+            <Pressable style={styles.menuBtn}>
+              <Text style={styles.menuBtnText}>Instellingen</Text>
+            </Pressable>
+            <Pressable style={styles.menuBtn} onPress={() => router.push("/Achievements")}>
+              <Text style={styles.menuBtnText}>Achievements</Text>
+            </Pressable>
+
+            <View style={{ marginTop: 15 }}>
+              <Button text="Uitloggen" pressFunc={uitloggen} type="danger" />
+            </View>
           </View>
         </View>
       </View>
@@ -62,7 +129,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     padding: Platform.OS === "ios" ? 20 : 20,
     paddingVertical: 30,
-    paddingHorizontal: 20
+    paddingHorizontal: 20,
   },
   settings: {
     display: "flex",
@@ -96,5 +163,24 @@ const styles = StyleSheet.create({
     height: 160,
     justifyContent: "center",
     position: "absolute",
+  },
+  menu: {
+    position: "absolute",
+    right: 0,
+    top: 65,
+    backgroundColor: "white",
+    padding: 12,
+    zIndex: 99,
+    elevation: 50,
+    borderRadius: 12,
+    alignSelf: "flex-start",
+  },
+  menuBtn: {
+    paddingVertical: 5,
+    borderBottomWidth: 1,
+    borderBottomColor: "#E2E2E2",
+  },
+  menuBtnText: {
+    fontSize: 18,
   },
 });

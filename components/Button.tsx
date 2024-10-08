@@ -7,7 +7,7 @@ type BtnProps = {
     type?: "primary" | "secondary" | "danger" | "navitem",
     link?: string,
     children?: ReactNode,
-    pressFunc?: () => void
+    pressFunc?: (event: any) => void // Pas deze regel aan
 }
 
 export default function Button({ text, type, link, children, pressFunc }: BtnProps) {

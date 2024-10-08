@@ -1,8 +1,42 @@
 import "@/global.css";
 import { StyleSheet, Text, View, ImageBackground, Image, TextInput } from "react-native";
 import Button from "@/components/Button";
+import { useState } from "react";
+import { router } from "expo-router";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export default function Login() {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    const response = await fetch('https://www.fitwave.stevenem.nl/sign_in?apiKey=We<3Fitwave', {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        username: username,
+        password: password
+      })
+    });
+
+    const json = await response.json();
+
+    if (json.auth) {
+      await AsyncStorage.setItem('username', json.username);
+      await AsyncStorage.setItem('email', json.email);
+      await AsyncStorage.setItem('userId', json.user_id.toString());
+
+      router.push('/home');
+    } else {
+      alert(json.message);
+    }
+  }
+
   return (
     <View style={styles.container}>
       <ImageBackground
@@ -28,6 +62,8 @@ export default function Login() {
           placeholder="Gebruikersnaam"
           placeholderTextColor="#fff"
           autoCapitalize="none"
+          value={username}
+          onChangeText={setUsername}
         />
         
         <TextInput
@@ -36,9 +72,11 @@ export default function Login() {
           placeholderTextColor="#fff"
           secureTextEntry={true}
           autoCapitalize="none"
+          value={password}
+          onChangeText={setPassword}
         />
 
-        <Button text="Inloggen" link="/home" type="primary" />
+        <Button text="Inloggen" pressFunc={handleSubmit} type="primary" />
 
         <Text style={{marginTop: 12, marginBottom: 12, color: "#fff"}}>- Heb je nog geen account? -</Text>
         <Button link="/registreren" type="secondary" text="Registreren" />
