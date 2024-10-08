@@ -1,6 +1,6 @@
 import Bol from "@/components/navigation/Bol";
 import Navigation from "@/components/navigation/Navigation";
-import CircularProgress from "@/components/progress";
+import CircularProgress from "@/components/Progress";
 import { useUserData } from "@/components/useUserData";
 import "@/global.css";
 import { useRouter } from "expo-router";

@@ -1,6 +1,6 @@
 import Button from "@/components/Button";
 import Navigation from "@/components/navigation/Navigation";
-import CircularProgress from "@/components/progress";
+import CircularProgress from "@/components/Progress";
 import { GluestackUIProvider } from "@/components/ui/gluestack-ui-provider";
 import "@/global.css";
 import { Image, StyleSheet, Text, View } from "react-native";
