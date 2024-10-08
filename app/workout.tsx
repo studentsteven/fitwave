@@ -3,7 +3,7 @@ import Navigation from "@/components/navigation/Navigation";
 import CircularProgress from "@/components/progress";
 import { GluestackUIProvider } from "@/components/ui/gluestack-ui-provider";
 import "@/global.css";
-import { StyleSheet, View, Text, Image } from "react-native";
+import { Image, StyleSheet, Text, View } from "react-native";
 
 export default function App() {
   return (
