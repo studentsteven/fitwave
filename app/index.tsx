@@ -29,9 +29,9 @@ export default function Login() {
     if (json.auth) {
       await AsyncStorage.setItem('username', json.username);
       await AsyncStorage.setItem('email', json.email);
-      await AsyncStorage.setItem('user_id', json.user_id.toString());
+      await AsyncStorage.setItem('userId', json.user_id.toString());
 
-      router.push('/home'); // Navigeren naar 'home'
+      router.push('/home');
     } else {
       alert(json.message);
     }

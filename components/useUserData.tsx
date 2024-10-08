@@ -11,7 +11,7 @@ export const useUserData = () => {
       try {
         const storedUsername = await AsyncStorage.getItem("username");
         const storedEmail = await AsyncStorage.getItem("email");
-        const storedUserId = await AsyncStorage.getItem("user_id");
+        const storedUserId = await AsyncStorage.getItem("userId");
 
         if (storedUsername) setUsername(storedUsername);
         if (storedEmail) setEmail(storedEmail);

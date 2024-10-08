@@ -1,10 +1,10 @@
-import Navigation from "@/components/navigation/Navigation";
-import {GluestackUIProvider} from "@/components/ui/gluestack-ui-provider";
-import "@/global.css";
-import {Text, View, StyleSheet, Dimensions, TouchableOpacity} from "react-native";
 import Bol from "@/components/navigation/Bol";
+import Navigation from "@/components/navigation/Navigation";
 import CircularProgress from "@/components/Progress";
-import {router, useRouter} from "expo-router";
+import { GluestackUIProvider } from "@/components/ui/gluestack-ui-provider";
+import "@/global.css";
+import { useRouter } from "expo-router";
+import { Dimensions, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
 export default function App() {
     //data wanneer api koppeling moet anders. voor nu goed.
