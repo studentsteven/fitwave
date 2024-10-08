@@ -127,7 +127,7 @@ const styles = StyleSheet.create({
   },
   voedingsbox: {
     backgroundColor: "#4DBBCF",
-    padding: 7,
+    padding: 15,
     borderRadius: 10,
     height: "95%",
     overflow: "hidden",

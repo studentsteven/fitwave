@@ -8,8 +8,15 @@ import {
   TouchableOpacity,
 } from "react-native";
 import Bol from "@/components/navigation/Bol";
+import Navigation from "@/components/navigation/Navigation";
 import CircularProgress from "@/components/Progress";
+import { GluestackUIProvider } from "@/components/ui/gluestack-ui-provider";
+import "@/global.css";
+import { useRouter } from "expo-router";
+import { Dimensions, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+
 import { router, useRouter } from "expo-router";
+
 
 export default function App() {
   //data wanneer api koppeling moet anders. voor nu goed.

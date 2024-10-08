@@ -12,6 +12,8 @@ import { Heading } from "../ui/heading";
 import { useRouter } from "expo-router";
 import { useState } from "react";
 import Button from "../Button";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { router } from "expo-router";
 
 type HeaderProps = {
   achtergrond: string;
@@ -30,6 +32,19 @@ export default function Header({ achtergrond, titel, username }: HeaderProps) {
   const toggleMenu = () => {
     setMenuVisible((prevState) => !prevState); // Toggle de huidige waarde
   };
+
+  const uitloggen = async () => {
+    try {
+      await AsyncStorage.removeItem('username');
+      await AsyncStorage.removeItem('email');
+      await AsyncStorage.removeItem('userId');
+      
+      router.push('/');
+    }
+      catch(exception) {
+        alert('uitloggen is niet gelukt.')
+      }
+  }
 
   return (
     <View style={{ position: "relative" }}>
@@ -87,7 +102,7 @@ export default function Header({ achtergrond, titel, username }: HeaderProps) {
               <Text style={styles.menuBtnText}>Profiel</Text>
             </Pressable>
             <Pressable style={styles.menuBtn}>
-              <Text style={styles.menuBtnText}>Vrienden</Text>
+              <Text onPress={() => router.push('/vrienden')} style={styles.menuBtnText}>Vrienden</Text>
             </Pressable>
             <Pressable style={styles.menuBtn}>
               <Text style={styles.menuBtnText}>Instellingen</Text>
