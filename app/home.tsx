@@ -1,4 +1,3 @@
-import Navigation from "@/components/navigation/Navigation";
 import "@/global.css";
 import {
   Text,
@@ -12,9 +11,6 @@ import Navigation from "@/components/navigation/Navigation";
 import CircularProgress from "@/components/Progress";
 import { GluestackUIProvider } from "@/components/ui/gluestack-ui-provider";
 import "@/global.css";
-import { useRouter } from "expo-router";
-import { Dimensions, StyleSheet, Text, TouchableOpacity, View } from "react-native";
-
 import { router, useRouter } from "expo-router";
 
 
