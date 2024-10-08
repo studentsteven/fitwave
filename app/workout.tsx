@@ -3,7 +3,7 @@ import Navigation from "@/components/navigation/Navigation";
 import CircularProgress from "@/components/progress";
 import { GluestackUIProvider } from "@/components/ui/gluestack-ui-provider";
 import "@/global.css";
-import { StyleSheet, View, Text, Image } from "react-native";
+import { Image, StyleSheet, Text, View } from "react-native";
 
 export default function App() {
   return (
@@ -13,7 +13,7 @@ export default function App() {
         title="Workout"
       >
         <View style={styles.container}>
-          <CircularProgress value={'12'} valuetext={'Kilometer'} max={'30'} circlesize={150} />
+          <CircularProgress value={'12'} valuetext={'Kilometer'} max={'30'} circlesize={150} strokeWidth={undefined} BGcolor={undefined} colorStroke={undefined} />
           
           <Text style={styles.badgeText}>Nog 18 kilometer voor een badge!</Text>
 
