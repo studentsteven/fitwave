@@ -1,6 +1,6 @@
 import Caltoevoegen from "@/components/calToevoegen";
 import Navigation from "@/components/navigation/Navigation";
-import CircularProgress from "@/components/progress";
+import CircularProgress from "@/components/Progress";
 import "@/global.css";
 import { ScrollView, StyleSheet, Text, View } from "react-native";
 
