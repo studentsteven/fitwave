@@ -43,7 +43,7 @@ export default function App() {
             valuetext="Stappen"
             max={10000}
             circlesize={145}
-            strokeWidth={15}
+            strokeWidth={10}
             BGcolor={"#e6e6e6"}
             colorStroke={"#76B729"}
           />
@@ -52,7 +52,7 @@ export default function App() {
             valuetext="Calorieën"
             max={2500}
             circlesize={145}
-            strokeWidth={15}
+            strokeWidth={10}
             BGcolor={"#e6e6e6"}
             colorStroke={"#ff6347"}
           />
