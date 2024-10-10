@@ -1,8 +1,9 @@
-import Caltoevoegen from "@/components/calToevoegen";
+import Button from "@/components/Button";
 import Navigation from "@/components/navigation/Navigation";
 import CircularProgress from "@/components/Progress";
 import "@/global.css";
-import { ScrollView, StyleSheet, Text, View } from "react-native";
+import { useState } from "react";
+import { ScrollView, StyleSheet, Text, View, Modal, Alert, Pressable, Image, TextInput } from "react-native";
 
 export default function App() {
   const foodItems = [
@@ -18,9 +19,11 @@ export default function App() {
     { id: 10, name: "Muesli", calories: 200 },
   ];
 
+  const [modalVisible, setModalVisible] = useState(false);
+
   return (
     <Navigation
-      background="https://www.athenas.nl/wp-content/uploads/voeding-thema-athenas.jpg"
+      background="https://www.hivvereniging.nl/images/2017/05/19_ad_gezonde_voeding.jpg"
       title="Voeding"
     >
       <View style={styles.container}>
@@ -46,13 +49,63 @@ export default function App() {
             ))}
           </ScrollView>
         </View>
-        <Caltoevoegen />
+        <Modal 
+          animationType="slide" 
+          transparent={true} visible={modalVisible} 
+          onDismiss={() => setModalVisible(false)} 
+          onRequestClose={() => { setModalVisible(!modalVisible); }}
+        >
+          <View style={styles.centeredView}>
+            <View style={styles.modalView}>
+              <View style={styles.topModal}>
+                <Text style={{fontSize: 16}}>Calorieën toevoegen</Text>
+                <Pressable onPress={() => setModalVisible(!modalVisible)}>
+                  <Image style={styles.closeButton} source={{ uri: 'https://img.icons8.com/ios7/600/delete-sign.png',}}/>
+                </Pressable>
+              </View>
+              
+              <TextInput placeholder="Naam" style={[styles.input, {marginTop: 12}]} />
+              <TextInput placeholder="Aantal Calorieën" style={[styles.input, {marginTop: 12, marginBottom: 12}]} />
+
+              <Button text="Toevoegen" pressFunc={() => setModalVisible(!modalVisible)} />
+
+            </View>
+          </View>
+        </Modal>
+
+        <Button pressFunc={() => setModalVisible(true)} text="Calorieën toevoegen" />
       </View>
     </Navigation>
   );
 }
 
 const styles = StyleSheet.create({
+  centeredView: {
+    position: "absolute",
+    bottom: 0,
+    left: 0,
+    right: 0
+  },
+  modalView: {
+    backgroundColor: "white",
+    padding: 20,
+    borderTopLeftRadius: 17,
+    borderTopRightRadius: 17,
+    width: "100%",
+    elevation: 24,
+    borderColor: "#D9D9D9",
+    borderWidth: 1
+  },
+  topModal: {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center"
+  },
+  closeButton: {
+    width: 30,
+    height: 30
+  },
   container: { display: "flex", gap: 20 },
   voedingsbox: {
     backgroundColor: "#4DBBCF",
@@ -78,5 +131,13 @@ const styles = StyleSheet.create({
   },
   tekstcomponent: {
     color: "white",
+  },
+  input: {
+    height: 40,
+    width: "100%",
+    backgroundColor: "rgba(0, 0, 0, 0.1)",
+    borderRadius: 8,
+    color: "black",
+    padding: 10,
   },
 });
