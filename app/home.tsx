@@ -2,6 +2,7 @@ import Bol from "@/components/navigation/Bol";
 import Navigation from "@/components/navigation/Navigation";
 import CircularProgress from "@/components/Progress";
 import { useUserData } from "@/components/useUserData";
+import { useFoodData } from "@/app/voeding";
 import "@/global.css";
 import { useRouter } from "expo-router";
 import {
@@ -14,11 +15,12 @@ import {
 
 export default function App() {
   const { username, email, userId } = useUserData();
-  //data wanneer api koppeling moet anders. voor nu goed.
+  const { totalCalories } = useFoodData();
   const array = ["Ma", "Di", "Wo", "Do", "Vr"];
   const color = ["#4DBBCF", "#4DBBCF", "#e6e6e6", "#e6e6e6", "#4DBBCF"];
   const screenWidth = Dimensions.get("window").width - 50;
   const router = useRouter();
+
   const LeaderBordHome = [
     { id: 1, name: "Wim", punten: 700 },
     { id: 2, name: "Henk", punten: 95 },
@@ -26,6 +28,7 @@ export default function App() {
     { id: 4, name: "Willem", punten: 150 },
     { id: 5, name: "Frank", punten: 210 },
   ];
+
   return (
     <Navigation
       background="https://aventus.nl/sites/default/files/styles/hero_xl/public/2024-09/A%2013-05-2024-820.webp?h=a05ca7ed&itok=Q-_GJYmw"
@@ -48,7 +51,7 @@ export default function App() {
             colorStroke={"#76B729"}
           />
           <CircularProgress
-            value={1424}
+            value={totalCalories}
             valuetext="Calorieën"
             max={2500}
             circlesize={145}
@@ -115,7 +118,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     height: 220,
     width: "100%",
-    overflow: "hidden", // Hide overflow if needed, but will use ScrollView for scrolling
+    overflow: "hidden",
   },
   boxtitel: {
     color: "white",
