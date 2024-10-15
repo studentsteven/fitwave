@@ -12,7 +12,6 @@ import {
   View,
 } from "react-native";
 
-
 export default function App() {
   const [notifications, setNotifications] = useState([]);
   const { username, email, userId } = useUserData();
@@ -20,19 +19,23 @@ export default function App() {
   useEffect(() => {
     const fetchFriendRequests = async () => {
       try {
-        const response = await fetch('https://www.fitwave.stevenem.nl/friendrequests?apiKey=We<3Fitwave', {
-          method: 'POST',
-          headers: {
-            Accept: 'application/json',
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-              user_id: userId
-          }),
-        });
+        const response = await fetch(
+          "https://www.fitwave.stevenem.nl/friendrequests?apiKey=We<3Fitwave",
+          {
+            method: "POST",
+            headers: {
+              Accept: "application/json",
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              user_id: userId,
+            }),
+          }
+        );
 
         const data = await response.json();
-        if (Array.isArray(data)) { // Check of het antwoord een array is
+        if (Array.isArray(data)) {
+          // Check of het antwoord een array is
           setNotifications(data);
         } else {
           console.log("API response is not an array:", data);
@@ -42,7 +45,8 @@ export default function App() {
       }
     };
 
-    if (userId) { // Voeg een controle toe om te zorgen dat userId bestaat
+    if (userId) {
+      // Voeg een controle toe om te zorgen dat userId bestaat
       fetchFriendRequests();
     }
   }, [userId]);
@@ -60,7 +64,11 @@ export default function App() {
     >
       <ScrollView>
         {notifications.map((notification) => (
-          <Pressable onPress={tofriends} key={notification.id} style={styles.notibox}>
+          <Pressable
+            onPress={tofriends}
+            key={notification.id}
+            style={styles.notibox}
+          >
             <Image
               style={styles.pf}
               source={{
@@ -69,7 +77,11 @@ export default function App() {
             />
             <View style={styles.text}>
               <Text style={styles.notitext}>
-                <Text style={{ fontWeight: "bold" }}>{ notification.username1 == username ? notification.username2 : notification.username1 }</Text>
+                <Text style={{ fontWeight: "bold" }}>
+                  {notification.username1 == username
+                    ? notification.username2
+                    : notification.username1}
+                </Text>
                 <Text> wil vrienden met je worden</Text>
               </Text>
             </View>
@@ -95,7 +107,6 @@ const styles = StyleSheet.create({
     color: "white",
   },
   text: {
-    // display: "flex",
     flexDirection: "row",
     marginLeft: 10,
     width: "80%",

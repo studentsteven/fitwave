@@ -1,9 +1,16 @@
-import "@/global.css";
-import { StyleSheet, Text, View, ImageBackground, Image, TextInput } from "react-native";
 import Button from "@/components/Button";
+import "@/global.css";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { router } from "expo-router";
 import { useState } from "react";
+import {
+  Image,
+  ImageBackground,
+  StyleSheet,
+  Text,
+  TextInput,
+  View,
+} from "react-native";
 
 export default function Login() {
   const [username, setUsername] = useState("");
@@ -13,32 +20,35 @@ export default function Login() {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    const response = await fetch('https://www.fitwave.stevenem.nl/sign_up?apiKey=We<3Fitwave', {
-      method: 'POST',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        username: username,
-        email: email,
-        password: password
-      })
-    });
+    const response = await fetch(
+      "https://www.fitwave.stevenem.nl/sign_up?apiKey=We<3Fitwave",
+      {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          username: username,
+          email: email,
+          password: password,
+        }),
+      }
+    );
 
     const json = await response.json();
-    
-    if (json.auth) {
-      await AsyncStorage.setItem('username', json.username);
-      await AsyncStorage.setItem('email', json.email);
-      await AsyncStorage.setItem('user_id', json.user_id.toString());
 
-      router.push('/home'); // Navigeren naar 'home'
+    if (json.auth) {
+      await AsyncStorage.setItem("username", json.username);
+      await AsyncStorage.setItem("email", json.email);
+      await AsyncStorage.setItem("user_id", json.user_id.toString());
+
+      router.push("/home"); // Navigeren naar 'home'
     } else {
       alert(json.message);
     }
-  }
-  
+  };
+
   return (
     <View style={styles.container}>
       <ImageBackground
@@ -89,7 +99,9 @@ export default function Login() {
 
         <Button text="Registreren" type="primary" pressFunc={handleSubmit} />
 
-        <Text style={{marginTop: 12, marginBottom: 12, color: "#fff"}}>- Heb je al een account? -</Text>
+        <Text style={{ marginTop: 12, marginBottom: 12, color: "#fff" }}>
+          - Heb je al een account? -
+        </Text>
         <Button link="/" type="secondary" text="Inloggen" />
       </View>
     </View>
@@ -98,7 +110,7 @@ export default function Login() {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1
+    flex: 1,
   },
   image: {
     height: "100%",

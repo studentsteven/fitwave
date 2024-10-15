@@ -1,16 +1,22 @@
-import { Pressable, StyleSheet, Text } from 'react-native';
 import { Link } from "expo-router";
-import { ReactNode } from 'react';
+import { ReactNode } from "react";
+import { Pressable, StyleSheet, Text } from "react-native";
 
 type BtnProps = {
-    text?: string,
-    type?: "primary" | "secondary" | "danger" | "navitem",
-    link?: string,
-    children?: ReactNode,
-    pressFunc?: (event: any) => void // Pas deze regel aan
-}
+  text?: string;
+  type?: "primary" | "secondary" | "danger" | "navitem";
+  link?: string;
+  children?: ReactNode;
+  pressFunc?: (event: any) => void;
+};
 
-export default function Button({ text, type, link, children, pressFunc }: BtnProps) {
+export default function Button({
+  text,
+  type,
+  link,
+  children,
+  pressFunc,
+}: BtnProps) {
   // Laden stylesheet voor type
   const getStyleType = () => {
     switch (type) {
@@ -29,22 +35,28 @@ export default function Button({ text, type, link, children, pressFunc }: BtnPro
 
   const styleType = getStyleType();
 
-  if(link) {
+  if (link) {
     return (
       <Link href={link} asChild>
         <Pressable style={styleType}>
-            {text ? <Text style={{color:"#fff", fontSize: 15, textAlign: "center" }}>{ text }</Text> : null}
-            {children ? children : null}
+          {text ? (
+            <Text style={{ color: "#fff", fontSize: 15, textAlign: "center" }}>
+              {text}
+            </Text>
+          ) : null}
+          {children ? children : null}
         </Pressable>
       </Link>
-
-    )
-  } 
-  else {
+    );
+  } else {
     return (
       <Pressable style={styleType} onPress={pressFunc}>
-          {text ? <Text style={{color:"#fff", fontSize: 15, textAlign: "center" }}>{ text }</Text> : null}
-          {children ? children : null}
+        {text ? (
+          <Text style={{ color: "#fff", fontSize: 15, textAlign: "center" }}>
+            {text}
+          </Text>
+        ) : null}
+        {children ? children : null}
       </Pressable>
     );
   }
@@ -52,24 +64,24 @@ export default function Button({ text, type, link, children, pressFunc }: BtnPro
 
 const styles = StyleSheet.create({
   buttonPrimary: {
-      backgroundColor: "#4DBBCF",
-      padding: 7,
-      borderRadius: 8,
-      width: "100%"
+    backgroundColor: "#4DBBCF",
+    padding: 7,
+    borderRadius: 8,
+    width: "100%",
   },
   buttonSecondary: {
     backgroundColor: "#A6ABAB",
     padding: 7,
     borderRadius: 8,
-    width: "100%"
+    width: "100%",
   },
   buttonDanger: {
     backgroundColor: "#CF4D4D",
     padding: 7,
     borderRadius: 8,
-    width: "100%"
+    width: "100%",
   },
   navitem: {
-    // Testing
-  }
+    // no styles
+  },
 });
