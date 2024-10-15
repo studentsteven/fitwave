@@ -14,6 +14,7 @@ export default function Workouttabel({ oefeningen }) {
           <Text style={styles.tableRow}>{oefening.aantal}</Text>
         </View>
       ))}
+      <View style={styles.divider}/>
     </View>
   );
 }
@@ -35,4 +36,10 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
   },
+  divider: {
+    width: '100%',
+    borderColor: 'Black',
+    borderWidth: 0.5,
+    marginTop: 8
+  }
 });
