@@ -20,7 +20,7 @@ export default function App() {
     { naam: "Traplopen", aantal: "10-15 minuten" },
     { naam: "Dansen", aantal: "20-30 minuten" },
   ];
-  
+
   return (
     <Navigation
       background="https://olimpsport.com/media/mageplaza/blog/post/image//w/y/wyprobuj-5-najlepszych-cwiczen-cardio-na-silowni_5.jpg"
@@ -33,7 +33,9 @@ export default function App() {
             {"\n"}
           </Text>
           <Text style={styles.tussentext}>
-            Heb je veel vet? Geen zorgen, met deze kleine workout routine helpen wij jou om langzaam maar zeker progressie te maken naar een gezonder lichaam!
+            Heb je veel vet? Geen zorgen, met deze kleine workout routine helpen
+            wij jou om langzaam maar zeker progressie te maken naar een gezonder
+            lichaam!
             {"\n"}
           </Text>
           <Text style={styles.subHeader}>Frequentie:</Text>
@@ -46,17 +48,17 @@ export default function App() {
           <Text style={styles.subHeader}>Krachttraining (Full Body)</Text>
           <Workouttabel oefeningen={fullBodyOefeningen} />
           <Text style={styles.tussentext}>
-            De meest effectieve manier om vet te verliezen is door veel te bewegen.
-            De onderstaande tabel geeft diverse voorbeelden van trainingen die hoge lichaams beweging vereisen.
+            De meest effectieve manier om vet te verliezen is door veel te
+            bewegen. De onderstaande tabel geeft diverse voorbeelden van
+            trainingen die hoge lichaams beweging vereisen.
             {"\n"}
           </Text>
           <Workouttabel oefeningen={cardio} />
           <Text style={styles.tussentext}>
-            Voor een optimaal resultaat is de gerecommandeerde frequentie bovenaan de pagina relevant.
-            Wees niet bang om je eigen toevoegingen toe te passen aan de workout! 
-            Dit is eenmaal een algemeene workout voor afvallen. 
-
-
+            Voor een optimaal resultaat is de gerecommandeerde frequentie
+            bovenaan de pagina relevant. Wees niet bang om je eigen toevoegingen
+            toe te passen aan de workout! Dit is eenmaal een algemeene workout
+            voor afvallen.
           </Text>
         </View>
       </ScrollView>
@@ -81,6 +83,6 @@ const styles = StyleSheet.create({
     fontWeight: "600",
   },
   tussentext: {
-    fontSize: 15
+    fontSize: 15,
   },
 });

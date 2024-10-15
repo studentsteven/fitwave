@@ -14,10 +14,9 @@ export default function App() {
     { naam: "Hamstring Stretch", aantal: "30 sec x 2" },
     { naam: "Cat-Cow Stretch", aantal: "1-2 min" },
     { naam: "Child's Pose", aantal: "30 sec" },
-    { naam: "Ademhalingsoefeningen", aantal: "1-2 min" }
+    { naam: "Ademhalingsoefeningen", aantal: "1-2 min" },
   ];
-  
- 
+
   return (
     <Navigation
       background="https://gezondnu.nl/content/uploads/2021/10/202015.gezondnu-bewegen-maakt-gelukkig-scaled-1.jpg"
@@ -30,9 +29,8 @@ export default function App() {
             {"\n"}
           </Text>
           <Text style={styles.tussentext}>
-            Als je behoefde hebt aan een gezonde leefstijl, 
-            dan is deze workout voor jou! 
-            Met deze oefeningen houd je je lichaam flexibel en mobiel.
+            Als je behoefde hebt aan een gezonde leefstijl, dan is deze workout
+            voor jou! Met deze oefeningen houd je je lichaam flexibel en mobiel.
             {"\n"}
           </Text>
           <Text style={styles.subHeader}>Frequentie:</Text>
@@ -45,10 +43,9 @@ export default function App() {
           <Text style={styles.subHeader}>Algemene gezonde oefeningen</Text>
           <Workouttabel oefeningen={fullBodyOefeningen} />
           <Text style={styles.tussentext}>
-          Door consequent te investeren in je gezondheid, 
-          verbeter je niet alleen je fysieke fitheid, 
-          maar ook je mentale welzijn. 
-          Vergeet niet dat herstel net zo belangrijk is als inspanning
+            Door consequent te investeren in je gezondheid, verbeter je niet
+            alleen je fysieke fitheid, maar ook je mentale welzijn. Vergeet niet
+            dat herstel net zo belangrijk is als inspanning.
             {"\n"}
           </Text>
         </View>
@@ -74,6 +71,6 @@ const styles = StyleSheet.create({
     fontWeight: "600",
   },
   tussentext: {
-    fontSize: 15
+    fontSize: 15,
   },
 });
