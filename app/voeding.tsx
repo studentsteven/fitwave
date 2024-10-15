@@ -1,73 +1,79 @@
 import Button from "@/components/Button";
 import Navigation from "@/components/navigation/Navigation";
 import CircularProgress from "@/components/Progress";
+import { useUserData } from "@/components/useUserData";
 import "@/global.css";
+import { router } from "expo-router";
 import { useEffect, useState } from "react";
 import {
+  Image,
+  Modal,
+  Pressable,
   ScrollView,
   StyleSheet,
   Text,
-  View,
-  Modal,
-  Pressable,
-  Image,
   TextInput,
+  View,
 } from "react-native";
-import { useUserData } from "@/components/useUserData";
-import { router } from "expo-router";
 
 export default function App() {
   const [modalVisible, setModalVisible] = useState(false);
-  const [calories, setCalories] = useState('');
-  const [caloriesName, setCaloriesName] = useState('');
+  const [calories, setCalories] = useState("");
+  const [caloriesName, setCaloriesName] = useState("");
   const [calItems, setCalItems] = useState([]);
 
   const { username, email, userId } = useUserData();
 
-
   const addCalDb = async (event) => {
     event.preventDefault();
 
-    const response = await fetch('https://www.fitwave.stevenem.nl/cal_toevoegen?apiKey=We<3Fitwave', {
-      method: 'POST',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        user_id: userId,
-        name: caloriesName,
-        calories: calories
-      })
-    });
+    const response = await fetch(
+      "https://www.fitwave.stevenem.nl/cal_toevoegen?apiKey=We<3Fitwave",
+      {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          user_id: userId,
+          name: caloriesName,
+          calories: calories,
+        }),
+      }
+    );
 
     const json = await response.json();
-    
+
     if (json.message) {
       alert(json.message);
-      router.push('/voeding'); // Navigeren naar 'voeding'
+      router.push("/voeding");
     }
-  }
-  
+  };
+
   useEffect(() => {
     const getCals = async () => {
       if (!userId) return; // Wacht tot userId beschikbaar is
-  
+
       try {
-        const response = await fetch('https://www.fitwave.stevenem.nl/cal?apiKey=We<3Fitwave', {
-          method: 'POST',
-          headers: {
-            Accept: 'application/json',
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            user_id: userId,
-          }),
-        });
-  
+        const response = await fetch(
+          "https://www.fitwave.stevenem.nl/cal?apiKey=We<3Fitwave",
+          {
+            method: "POST",
+            headers: {
+              Accept: "application/json",
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              user_id: userId,
+            }),
+          }
+        );
+
         const data = await response.json();
-  
-        if (Array.isArray(data)) { // Check of het antwoord een array is
+
+        if (Array.isArray(data)) {
+          // Check of het antwoord een array is
           setCalItems(data);
         } else {
           console.log("API response is not an array:", data);
@@ -76,10 +82,9 @@ export default function App() {
         console.log("Fetch error:", error);
       }
     };
-  
+
     getCals();
   }, [userId]); // Voeg userId toe als dependency
-  
 
   var count = 1;
 
@@ -106,7 +111,9 @@ export default function App() {
                 <Text style={styles.tekstcomponent}>
                   {count++} | {item.name}
                 </Text>
-                <Text style={styles.tekstcomponent}>{item.calories_number} cal</Text>
+                <Text style={styles.tekstcomponent}>
+                  {item.calories_number} cal
+                </Text>
               </View>
             ))}
           </ScrollView>
@@ -147,10 +154,7 @@ export default function App() {
                 value={calories}
                 onChangeText={(text) => setCalories(text)}
               />
-              <Button
-                text="Toevoegen"
-                pressFunc={addCalDb}
-              />
+              <Button text="Toevoegen" pressFunc={addCalDb} />
             </View>
           </View>
         </Modal>
