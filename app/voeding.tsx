@@ -2,7 +2,7 @@ import Button from "@/components/Button";
 import Navigation from "@/components/navigation/Navigation";
 import CircularProgress from "@/components/Progress";
 import "@/global.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   ScrollView,
   StyleSheet,
@@ -13,45 +13,75 @@ import {
   Image,
   TextInput,
 } from "react-native";
-
-export function useFoodData() {
-  const [foodItems, setFoodItems] = useState([
-    { id: 1, name: "Broodje Kroket", calories: 336 },
-    { id: 2, name: "Pizza", calories: 266 },
-    { id: 3, name: "Pannenkoeken", calories: 227 },
-    { id: 4, name: "Pretzel", calories: 380 },
-    { id: 5, name: "Croissant", calories: 161 },
-    { id: 6, name: "Stokbrood", calories: 320 },
-    { id: 7, name: "Roomrol", calories: 317 },
-  ]);
-
-  const totalCalories = foodItems.reduce((total, item) => {
-    return total + item.calories;
-  }, 0);
-
-  const addNewFoodItem = (newFoodName, newCalories) => {
-    if (newFoodName && newCalories) {
-      const newItem = {
-        id: foodItems.length + 1,
-        name: newFoodName,
-        calories: parseInt(newCalories),
-      };
-      setFoodItems([...foodItems, newItem]);
-    }
-  };
-
-  return {
-    foodItems,
-    totalCalories,
-    addNewFoodItem,
-  };
-}
+import { useUserData } from "@/components/useUserData";
+import { router } from "expo-router";
 
 export default function App() {
-  const { foodItems, totalCalories, addNewFoodItem } = useFoodData();
   const [modalVisible, setModalVisible] = useState(false);
-  const [newFoodName, setNewFoodName] = useState("");
-  const [newCalories, setNewCalories] = useState("");
+  const [calories, setCalories] = useState('');
+  const [caloriesName, setCaloriesName] = useState('');
+  const [calItems, setCalItems] = useState([]);
+
+  const { username, email, userId } = useUserData();
+
+
+  const addCalDb = async (event) => {
+    event.preventDefault();
+
+    const response = await fetch('https://www.fitwave.stevenem.nl/cal_toevoegen?apiKey=We<3Fitwave', {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        user_id: userId,
+        name: caloriesName,
+        calories: calories
+      })
+    });
+
+    const json = await response.json();
+    
+    if (json.message) {
+      alert(json.message);
+      router.push('/voeding'); // Navigeren naar 'voeding'
+    }
+  }
+  
+  useEffect(() => {
+    const getCals = async () => {
+      if (!userId) return; // Wacht tot userId beschikbaar is
+  
+      try {
+        const response = await fetch('https://www.fitwave.stevenem.nl/cal?apiKey=We<3Fitwave', {
+          method: 'POST',
+          headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            user_id: userId,
+          }),
+        });
+  
+        const data = await response.json();
+  
+        if (Array.isArray(data)) { // Check of het antwoord een array is
+          setCalItems(data);
+        } else {
+          console.log("API response is not an array:", data);
+        }
+      } catch (error) {
+        console.log("Fetch error:", error);
+      }
+    };
+  
+    getCals();
+  }, [userId]); // Voeg userId toe als dependency
+  
+
+  var count = 1;
 
   return (
     <Navigation
@@ -60,7 +90,7 @@ export default function App() {
     >
       <View style={styles.container}>
         <CircularProgress
-          value={totalCalories}
+          value={2000}
           valuetext="calorieën"
           max={2500}
           circlesize={200}
@@ -71,12 +101,12 @@ export default function App() {
         <View style={styles.voedingsbox}>
           <Text style={styles.boxtitel}>Voedingslijst</Text>
           <ScrollView>
-            {foodItems.map((item) => (
+            {calItems.map((item) => (
               <View key={item.id} style={styles.lijstcomponent}>
                 <Text style={styles.tekstcomponent}>
-                  {item.id} | {item.name}
+                  {count++} | {item.name}
                 </Text>
-                <Text style={styles.tekstcomponent}>{item.calories} cal</Text>
+                <Text style={styles.tekstcomponent}>{item.calories_number} cal</Text>
               </View>
             ))}
           </ScrollView>
@@ -107,24 +137,19 @@ export default function App() {
               <TextInput
                 placeholder="Naam"
                 style={[styles.input, { marginTop: 12 }]}
-                value={newFoodName}
-                onChangeText={(text) => setNewFoodName(text)}
+                value={caloriesName}
+                onChangeText={(text) => setCaloriesName(text)}
               />
               <TextInput
                 placeholder="Aantal Calorieën"
                 keyboardType="numeric"
                 style={[styles.input, { marginTop: 12, marginBottom: 12 }]}
-                value={newCalories}
-                onChangeText={(text) => setNewCalories(text)}
+                value={calories}
+                onChangeText={(text) => setCalories(text)}
               />
               <Button
                 text="Toevoegen"
-                pressFunc={() => {
-                  addNewFoodItem(newFoodName, newCalories);
-                  setNewFoodName("");
-                  setNewCalories("");
-                  setModalVisible(false);
-                }}
+                pressFunc={addCalDb}
               />
             </View>
           </View>

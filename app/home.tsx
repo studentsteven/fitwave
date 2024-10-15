@@ -2,7 +2,6 @@ import Bol from "@/components/navigation/Bol";
 import Navigation from "@/components/navigation/Navigation";
 import CircularProgress from "@/components/Progress";
 import { useUserData } from "@/components/useUserData";
-import { useFoodData } from "@/app/voeding";
 import "@/global.css";
 import { useRouter } from "expo-router";
 import {
@@ -15,7 +14,6 @@ import {
 
 export default function App() {
   const { username, email, userId } = useUserData();
-  const { totalCalories } = useFoodData();
   const array = ["Ma", "Di", "Wo", "Do", "Vr"];
   const color = ["#4DBBCF", "#4DBBCF", "#e6e6e6", "#e6e6e6", "#4DBBCF"];
   const screenWidth = Dimensions.get("window").width - 50;
@@ -51,7 +49,7 @@ export default function App() {
             colorStroke={"#76B729"}
           />
           <CircularProgress
-            value={totalCalories}
+            value={2000}
             valuetext="Calorieën"
             max={2500}
             circlesize={145}
