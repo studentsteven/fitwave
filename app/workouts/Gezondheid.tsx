@@ -45,7 +45,7 @@ export default function App() {
           <Text style={styles.tussentext}>
             Door consequent te investeren in je gezondheid, verbeter je niet
             alleen je fysieke fitheid, maar ook je mentale welzijn. Vergeet niet
-            dat herstel net zo belangrijk is als inspanning
+            dat herstel net zo belangrijk is als inspanning.
             {"\n"}
           </Text>
         </View>
