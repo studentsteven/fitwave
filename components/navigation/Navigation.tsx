@@ -1,9 +1,9 @@
 import { StyleSheet, View } from "react-native";
 import { Card } from "../ui/card";
+import { GluestackUIProvider } from "../ui/gluestack-ui-provider";
+import { useUserData } from "../useUserData";
 import Footer from "./Footer";
 import Header from "./Header";
-import { useUserData } from "../useUserData";
-import { GluestackUIProvider } from "../ui/gluestack-ui-provider";
 
 type NavigationProps = {
   children: React.ReactNode;

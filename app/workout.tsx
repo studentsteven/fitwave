@@ -51,13 +51,13 @@ const styles = StyleSheet.create({
     marginBottom: "10%",
   },
   badgeText: {
-    fontSize: 16, // Aangepaste grootte voor de tekst
+    fontSize: 16,
     color: "#000",
     fontWeight: "bold",
   },
   badgeImage: {
-    width: 70, // Breedte van de afbeelding
-    height: 70, // Hoogte van de afbeelding
+    width: 70,
+    height: 70,
   },
   button: {
     backgroundColor: "#4DBBCF",

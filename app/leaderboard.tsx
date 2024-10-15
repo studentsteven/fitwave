@@ -19,7 +19,7 @@ export default function App() {
     { id: 1, username: "Jan", punten: 38454 },
     { id: 2, username: "Kees", punten: 38454 },
     { id: 3, username: "Sophie", punten: 1000 },
-    { id: 4, username: "Emma", punten: 1000000000000 },
+    { id: 4, username: "Emma", punten: 10000 },
     { id: 5, username: "Piet", punten: 210 },
     { id: 6, username: "Lars", punten: 130 },
     { id: 7, username: "Nina", punten: 200 },
@@ -74,30 +74,33 @@ export default function App() {
 
   var lastCount = 5000;
   function getRandomInt(max) {
-    lastCount =  Math.floor(Math.random() * max);
+    lastCount = Math.floor(Math.random() * max);
     return lastCount;
   }
-  
+
   useEffect(() => {
     const fetchFriends = async () => {
       try {
-        const response = await fetch('https://www.fitwave.stevenem.nl/friends?apiKey=We<3Fitwave', {
-          method: 'POST',
-          headers: {
-            Accept: 'application/json',
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-              user_id: userId
-          }),
-        });
+        const response = await fetch(
+          "https://www.fitwave.stevenem.nl/friends?apiKey=We<3Fitwave",
+          {
+            method: "POST",
+            headers: {
+              Accept: "application/json",
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              user_id: userId,
+            }),
+          }
+        );
         const data = await response.json();
-        if (Array.isArray(data)) { // Check of het antwoord een array is
-          // console.log(data);\
+        if (Array.isArray(data)) {
+          // Check of het antwoord een array is
           const ownData = {
             username1: username,
-            username2: username
-          }
+            username2: username,
+          };
           data.push(ownData);
           setFriendPlayers(data);
         } else {
@@ -106,9 +109,10 @@ export default function App() {
       } catch (error) {
         console.log("Fetch error:", error);
       }
-  };
-  
-    if (userId) { // Voeg een controle toe om te zorgen dat userId bestaat
+    };
+
+    if (userId) {
+      // Voeg een controle toe om te zorgen dat userId bestaat
       fetchFriends();
     }
   }, [userId]);
@@ -141,8 +145,9 @@ export default function App() {
             {displayedPlayers.map((item) => (
               <View key={count} style={styles.lijstcomponent}>
                 <Text style={styles.tekstcomponent}>
-                  { count++} | { item.username1 == username ? item.username2 : item.username1 }
-                  { item.username ? item.username : null }
+                  {count++} |{" "}
+                  {item.username1 == username ? item.username2 : item.username1}
+                  {item.username ? item.username : null}
                 </Text>
                 <Text style={styles.tekstcomponent}>
                   {getRandomInt(lastCount)}

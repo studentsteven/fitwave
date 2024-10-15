@@ -18,205 +18,263 @@ export default function Vrienden() {
   const sendRequest = async (event) => {
     event.preventDefault();
 
-    const response = await fetch('https://www.fitwave.stevenem.nl/send_friend_request?apiKey=We<3Fitwave', {
-      method: 'POST',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        username: usernameFriend,
-        req_user_id: userId
-      })
-    });
+    const response = await fetch(
+      "https://www.fitwave.stevenem.nl/send_friend_request?apiKey=We<3Fitwave",
+      {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          username: usernameFriend,
+          req_user_id: userId,
+        }),
+      }
+    );
 
     const json = await response.json();
-    
+
     if (json.message) {
       alert(json.message);
     } else {
       alert(json.message);
     }
-  }
+  };
 
   const acceptFriend = async (id: number) => {
     try {
-      const response = await fetch('https://www.fitwave.stevenem.nl/accept_friend?apiKey=We<3Fitwave', {
-        method: 'POST',
-        headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          friendReqId: id
-        }),
-      });
+      const response = await fetch(
+        "https://www.fitwave.stevenem.nl/accept_friend?apiKey=We<3Fitwave",
+        {
+          method: "POST",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            friendReqId: id,
+          }),
+        }
+      );
 
       const json = await response.json();
 
-      if(json.message) {
+      if (json.message) {
         alert(json.message);
-        router.push('/vrienden'); // Navigeren naar 'vrienden'
+        router.push("/vrienden");
       }
     } catch (error) {
       console.log(error);
     }
-  }
+  };
 
-const declineFriend = async (id: number) => {
-  try {
-    const response = await fetch('https://www.fitwave.stevenem.nl/decline_friend?apiKey=We<3Fitwave', {
-      method: 'POST',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        friendReqId: id
-      }),
-    });
-
-    const json = await response.json();
-
-    if(json.message) {
-      alert(json.message);
-      router.push('/vrienden'); // Navigeren naar 'vrienden'
-    }
-  } catch (error) {
-    console.log(error);
-  }
-}
-
-useEffect(() => {
-  const fetchFriends = async () => {
+  const declineFriend = async (id: number) => {
     try {
-      const response = await fetch('https://www.fitwave.stevenem.nl/friends?apiKey=We<3Fitwave', {
-        method: 'POST',
-        headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-            user_id: userId
-        }),
-      });
-      const data = await response.json();
-      if (Array.isArray(data)) { // Check of het antwoord een array is
-        setFriends(data);
-      } else {
-        console.log("API response is not an array:", data);
+      const response = await fetch(
+        "https://www.fitwave.stevenem.nl/decline_friend?apiKey=We<3Fitwave",
+        {
+          method: "POST",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            friendReqId: id,
+          }),
+        }
+      );
+
+      const json = await response.json();
+
+      if (json.message) {
+        alert(json.message);
+        router.push("/vrienden");
       }
     } catch (error) {
-      console.log("Fetch error:", error);
+      console.log(error);
     }
-};
+  };
 
-  if (userId) { // Voeg een controle toe om te zorgen dat userId bestaat
-    fetchFriends();
-  }
-}, [userId]);
-
-    useEffect(() => {
-      const fetchFriendRequests = async () => {
-        try {
-          const response = await fetch('https://www.fitwave.stevenem.nl/friendrequests?apiKey=We<3Fitwave', {
-            method: 'POST',
+  useEffect(() => {
+    const fetchFriends = async () => {
+      try {
+        const response = await fetch(
+          "https://www.fitwave.stevenem.nl/friends?apiKey=We<3Fitwave",
+          {
+            method: "POST",
             headers: {
-              Accept: 'application/json',
-              'Content-Type': 'application/json',
+              Accept: "application/json",
+              "Content-Type": "application/json",
             },
             body: JSON.stringify({
-                user_id: userId
+              user_id: userId,
             }),
-          });
-
-          const data = await response.json();
-          if (Array.isArray(data)) { // Check of het antwoord een array is
-            setFriendRequests(data);
-          } else {
-            console.log("API response is not an array:", data);
           }
-        } catch (error) {
-          console.log("Fetch error:", error);
+        );
+        const data = await response.json();
+        if (Array.isArray(data)) {
+          // Check of het antwoord een array is
+          setFriends(data);
+        } else {
+          console.log("API response is not an array:", data);
         }
-      };
-
-      if (userId) { // Voeg een controle toe om te zorgen dat userId bestaat
-        fetchFriendRequests();
+      } catch (error) {
+        console.log("Fetch error:", error);
       }
-    }, [userId]);
+    };
 
-      return (
-          <Navigation title="Vrienden" background="https://media.nu.nl/m/do0x2aual01p_wd1280/waarom-vrienden-maken-in-een-nieuwe-omgeving-belangrijk-is.jpg">
-            {friendRequests.map((item, key) => (
-              <View style={styles.friendCard} key={key}>
-                <Image
-                  style={styles.pf}
-                  source={{
-                    uri: "https://static.vecteezy.com/system/resources/previews/009/292/244/non_2x/default-avatar-icon-of-social-media-user-vector.jpg",
-                  }}
-                />
-                <View>
-                  <Text style={{color: "white", fontWeight: "bold"}}>{ item.username1 == username ? item.username2 : item.username1 }</Text>
-                  <Text style={{color: "white"}}>Verstuurd op: {  moment(item.sended).format('DD-MM-YYYY HH:mm')  }</Text>
-                </View>
-                <View style={{display: "flex", flexDirection: "row", justifyContent: "flex-end"}}>
-                <Pressable onPress={() => acceptFriend(item.id)} style={[styles.button, {backgroundColor: "#76B729"}]}>
-                  <Image
-                      style={{ height: "100%", width: "100%"}}
-                      source={{
-                        uri: "https://cdn-icons-png.flaticon.com/512/33/33281.png",
-                      }}
-                    />
-                  </Pressable>
+    if (userId) {
+      // Voeg een controle toe om te zorgen dat userId bestaat
+      fetchFriends();
+    }
+  }, [userId]);
 
-                  <Pressable onPress={() => declineFriend(item.id)} style={[styles.button]}>
-                    <Image
-                      style={{ height: "100%", width: "100%" }}
-                      source={{
-                        uri: "https://pngpix.com/images/hd/black-cross-symbol-9bm61r59h46bdsme.jpg",
-                      }}
-                    />
-                  </Pressable>
-                </View>
-              </View>
-            ))}
+  useEffect(() => {
+    const fetchFriendRequests = async () => {
+      try {
+        const response = await fetch(
+          "https://www.fitwave.stevenem.nl/friendrequests?apiKey=We<3Fitwave",
+          {
+            method: "POST",
+            headers: {
+              Accept: "application/json",
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              user_id: userId,
+            }),
+          }
+        );
 
-            { friendRequests.length > 0 ? <View style={{ borderBottomColor: 'black', borderBottomWidth: StyleSheet.hairlineWidth, marginVertical: 12 }} /> : null}
+        const data = await response.json();
+        if (Array.isArray(data)) {
+          // Check of het antwoord een array is
+          setFriendRequests(data);
+        } else {
+          console.log("API response is not an array:", data);
+        }
+      } catch (error) {
+        console.log("Fetch error:", error);
+      }
+    };
 
-            {friends.map((item, key) => (
-              <View style={styles.friendCard} key={key}>
-                <Image
-                  style={styles.pf}
-                  source={{
-                    uri: "https://static.vecteezy.com/system/resources/previews/009/292/244/non_2x/default-avatar-icon-of-social-media-user-vector.jpg",
-                  }}
-                />
-                <View>
-                  <Text style={{color: "white", fontWeight: "bold"}}>{ item.username1 == username ? item.username2 : item.username1 }</Text>
-                  <Text style={{color: "white"}}>Vrienden sinds: {  moment(item.sended).format('DD-MM-YYYY HH:mm')  }</Text>
-                </View>
-              </View>
-            ))}
+    if (userId) {
+      // Voeg een controle toe om te zorgen dat userId bestaat
+      fetchFriendRequests();
+    }
+  }, [userId]);
 
-            {friends.length < 1 ? <Text>Op dit moment heb je nog geen vrienden.</Text> : null}
+  return (
+    <Navigation
+      title="Vrienden"
+      background="https://media.nu.nl/m/do0x2aual01p_wd1280/waarom-vrienden-maken-in-een-nieuwe-omgeving-belangrijk-is.jpg"
+    >
+      {friendRequests.map((item, key) => (
+        <View style={styles.friendCard} key={key}>
+          <Image
+            style={styles.pf}
+            source={{
+              uri: "https://static.vecteezy.com/system/resources/previews/009/292/244/non_2x/default-avatar-icon-of-social-media-user-vector.jpg",
+            }}
+          />
+          <View>
+            <Text style={{ color: "white", fontWeight: "bold" }}>
+              {item.username1 == username ? item.username2 : item.username1}
+            </Text>
+            <Text style={{ color: "white" }}>
+              Verstuurd op: {moment(item.sended).format("DD-MM-YYYY HH:mm")}
+            </Text>
+          </View>
+          <View
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              justifyContent: "flex-end",
+            }}
+          >
+            <Pressable
+              onPress={() => acceptFriend(item.id)}
+              style={[styles.button, { backgroundColor: "#76B729" }]}
+            >
+              <Image
+                style={{ height: "100%", width: "100%" }}
+                source={{
+                  uri: "https://cdn-icons-png.flaticon.com/512/33/33281.png",
+                }}
+              />
+            </Pressable>
 
-            <View style={{ borderBottomColor: 'black', borderBottomWidth: StyleSheet.hairlineWidth, marginVertical: 12 }} />
-            
-            <Text style={{marginBottom: 10,}}>Verzend een vriendschapsverzoek:</Text>
+            <Pressable
+              onPress={() => declineFriend(item.id)}
+              style={[styles.button]}
+            >
+              <Image
+                style={{ height: "100%", width: "100%" }}
+                source={{
+                  uri: "https://pngpix.com/images/hd/black-cross-symbol-9bm61r59h46bdsme.jpg",
+                }}
+              />
+            </Pressable>
+          </View>
+        </View>
+      ))}
 
-            <TextInput
-              style={styles.input}
-              placeholder="Username"
-              placeholderTextColor="#000"
-              autoCapitalize="none"
-              value={usernameFriend}
-              onChangeText={setUsernameFriend}
-            />
-            <Button text="Verzenden" pressFunc={sendRequest} />
-          </Navigation>
-      );
-  }
+      {friendRequests.length > 0 ? (
+        <View
+          style={{
+            borderBottomColor: "black",
+            borderBottomWidth: StyleSheet.hairlineWidth,
+            marginVertical: 12,
+          }}
+        />
+      ) : null}
+
+      {friends.map((item, key) => (
+        <View style={styles.friendCard} key={key}>
+          <Image
+            style={styles.pf}
+            source={{
+              uri: "https://static.vecteezy.com/system/resources/previews/009/292/244/non_2x/default-avatar-icon-of-social-media-user-vector.jpg",
+            }}
+          />
+          <View>
+            <Text style={{ color: "white", fontWeight: "bold" }}>
+              {item.username1 == username ? item.username2 : item.username1}
+            </Text>
+            <Text style={{ color: "white" }}>
+              Vrienden sinds: {moment(item.sended).format("DD-MM-YYYY HH:mm")}
+            </Text>
+          </View>
+        </View>
+      ))}
+
+      {friends.length < 1 ? (
+        <Text>Op dit moment heb je nog geen vrienden.</Text>
+      ) : null}
+
+      <View
+        style={{
+          borderBottomColor: "black",
+          borderBottomWidth: StyleSheet.hairlineWidth,
+          marginVertical: 12,
+        }}
+      />
+
+      <Text style={{ marginBottom: 10 }}>Verzend een vriendschapsverzoek:</Text>
+
+      <TextInput
+        style={styles.input}
+        placeholder="Username"
+        placeholderTextColor="#000"
+        autoCapitalize="none"
+        value={usernameFriend}
+        onChangeText={setUsernameFriend}
+      />
+      <Button text="Verzenden" pressFunc={sendRequest} />
+    </Navigation>
+  );
+}
 
 const styles = StyleSheet.create({
   friendCard: {
@@ -234,7 +292,7 @@ const styles = StyleSheet.create({
     borderRadius: 9999,
     height: 50,
     width: "auto",
-    aspectRatio: "1/1"
+    aspectRatio: "1/1",
   },
   button: {
     height: 40,
@@ -243,7 +301,7 @@ const styles = StyleSheet.create({
     padding: 10,
     display: "flex",
     alignItems: "center",
-    justifyContent: "center"
+    justifyContent: "center",
   },
   input: {
     height: 40,
@@ -255,5 +313,5 @@ const styles = StyleSheet.create({
     marginBottom: 12,
     color: "black",
     padding: 10,
-  }
+  },
 });
