@@ -35,9 +35,10 @@ export default function App() {
             {"\n"}
           </Text>
           <Text style={styles.tussentext}>
-            Heb je een passie voor krachttraining en het opbouwen van je spiermassa, 
-            maar heb je nog geen idee hoe een routine voor deze doeleinden eruit moet zien? 
-            Dan kunnen wij jou verder helpen met deze voorbeelden van workouts die je spieren laten groeien!
+            Heb je een passie voor krachttraining en het opbouwen van je
+            spiermassa, maar heb je nog geen idee hoe een routine voor deze
+            doeleinden eruit moet zien? Dan kunnen wij jou verder helpen met
+            deze voorbeelden van workouts die je spieren laten groeien!
             {"\n"}
           </Text>
           <Text style={styles.subHeader}>Frequentie:</Text>
@@ -50,17 +51,18 @@ export default function App() {
           <Text style={styles.subHeader}>Krachttraining (Full Body)</Text>
           <Workouttabel oefeningen={fullBodyOefeningen} />
           <Text style={styles.tussentext}>
-            De onderstaande tabel bevat een groot aantal oefeningen die de spieren testen en de opbouw stimuleren. 
-            Denk eraan om niet jezelf te overbelasten en ook een pauze te nemen om bijvoorbeeld water te consumeren.
+            De onderstaande tabel bevat een groot aantal oefeningen die de
+            spieren testen en de opbouw stimuleren. Denk eraan om niet jezelf te
+            overbelasten en ook een pauze te nemen om bijvoorbeeld water te
+            consumeren.
             {"\n"}
           </Text>
           <Workouttabel oefeningen={cardio} />
           <Text style={styles.tussentext}>
-            Voor een optimaal resultaat is de gerecommandeerde frequentie bovenaan de pagina relevant.
-            Wees niet bang om je eigen toevoegingen toe te passen aan de workout! 
-            Dit is eenmaal een algemeene workout voor bulken. 
-
-
+            Voor een optimaal resultaat is de gerecommandeerde frequentie
+            bovenaan de pagina relevant. Wees niet bang om je eigen toevoegingen
+            toe te passen aan de workout! Dit is eenmaal een algemeene workout
+            voor bulken.
           </Text>
         </View>
       </ScrollView>
@@ -85,7 +87,6 @@ const styles = StyleSheet.create({
     fontWeight: "600",
   },
   tussentext: {
-    fontSize: 15
+    fontSize: 15,
   },
-  
 });
